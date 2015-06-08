@@ -85,7 +85,7 @@
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
     <string>100</string>
     </gap:config-file>
-
+<feature name="http://api.phonegap.com/1.0/device"/>
     <!--
         Define access to external domains.
 
