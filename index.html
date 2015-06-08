@@ -4,6 +4,7 @@
     <title>Capture Photo</title>
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"/>
     <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/shake.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     var pictureSource;   // picture source
@@ -18,6 +19,11 @@
     function onDeviceReady() {
 		pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
+		
+		var element = document.getElementById('deviceIsReady');
+		element.innerHTML = 'Watching shake movement...';
+		
+		shake.startWatch(onDetected);
     }
 
     // Called when a photo is successfully retrieved
@@ -103,14 +109,25 @@
       alert('Failed because: ' + message);
     }
 
+    function onDetected() {
+		var element = document.getElementById('shakeData');
+		element.innerHTML = 'It\'s happening! <p><button type="button" onclick="clearShakeData();">Clear</button></p>'
+	}
+	
+	function clearShakeData(){
+		document.getElementById('shakeData').innerHTML = '';
+	}
     </script>
   </head>
   <body>
     <button onClick="capturePhotoWithData();">Capture Photo With Image Data</button> <br>
-    <button onClick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br>
+    <button onClick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br><!--esta funca -->
     <button onClick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
     <button onClick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
     <img style="display:none;" id="largeImage" src="" />
+    <div id="deviceIsReady">Loading...</div>
+    <p id="shakeData">
+	</p>
   </body>
 </html>
