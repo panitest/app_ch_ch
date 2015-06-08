@@ -46,7 +46,7 @@
     
     <gap:plugin name="org.apache.cordova.device-orientation" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
-
+    <gap:plugin name="org.apache.cordova.camera" />
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
     <!--
