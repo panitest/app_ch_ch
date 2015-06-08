@@ -4,7 +4,6 @@
     <title>Capture Photo</title>
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"/>
     <script type="text/javascript" src="phonegap.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/shake.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     var pictureSource;   // picture source
@@ -21,10 +20,10 @@
 		pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
 		
-		var element = document.getElementById('deviceIsReady');
+		/*var element = document.getElementById('deviceIsReady');
 		element.innerHTML = 'Watching shake movement...';
 		
-		shake.startWatch(onDetected);
+		shake.startWatch(onDetected);*/
     }
 
     // Called when a photo is successfully retrieved
