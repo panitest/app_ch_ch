@@ -76,6 +76,9 @@
 	function continuar(){
 		alert('ok');
 	}
+	window.addEventListener('message',function(event) {
+  	 alert(event.data); // call function here
+	},false);
     </script>
   </head>
   <body id="contentapp">
