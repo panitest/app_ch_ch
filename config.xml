@@ -50,6 +50,8 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.camera" />
 	<gap:plugin name="org.apache.cordova.device-motion" />
+	<gap:plugin name="com.vladstirbu.cordova.instagram" version="0.2.4" />
+	<gap:plugin name="com.apes.plugins.canvastodataurl" version="1.0.6" />
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
     <!--
