@@ -30,7 +30,7 @@
     // Called when a photo is successfully retrieved
     //
     function onPhotoDataSuccess(imageData) {
-		alert(imageData);
+		//alert(imageData);
       // Get image handle
       //
       var smallImage = document.getElementById('smallImage');
@@ -119,6 +119,12 @@
 	function clearShakeData(){
 		document.getElementById('shakeData').innerHTML = '';
 	}
+	function getDataIm(img,idDest){
+		var canvas=document.createElement('canvas');
+		var ctx=canvas.getContext('2d');
+		ctx.drawImage(img,0,0);
+		document.getElementById(idDest).src=canvas.toDataURL();
+	}
     </script>
   </head>
   <body>
@@ -126,7 +132,7 @@
     <button onClick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br><!--esta funca -->
     <button onClick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
     <button onClick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
-    <button onClick="">instagram</button><br>
+    <button onClick="getDataIm(document.getElementById('smallImage'),'largeImage')">testData</button><br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
     <img style="display:none;" id="largeImage" src="" />
     <div id="deviceIsReady">Loading...</div>
