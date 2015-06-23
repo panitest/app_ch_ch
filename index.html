@@ -120,7 +120,7 @@
 		document.getElementById('shakeData').innerHTML = '';
 	}
 	function getDataIm(img,idDest){
-		var canvas=document.createElement('canvas');
+		var canvas=document.getElementById('canvas');
 		var ctx=canvas.getContext('2d');
 		ctx.drawImage(img,0,0);
 		document.getElementById(idDest).src=canvas.toDataURL();
@@ -128,6 +128,7 @@
     </script>
   </head>
   <body>
+  <canvas id="canvas"></canvas>
     <button onClick="capturePhotoWithData();">Capture Photo With Image Data</button> <br>
     <button onClick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br><!--esta funca -->
     <button onClick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
