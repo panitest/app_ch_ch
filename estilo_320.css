@@ -1,0 +1,67 @@
+@media (min-width:320px) { 
+
+#cajabasedetodo{  width:320px; height:480px;  margin-left:-160px;}
+
+.logolanding{ display:block; width:237px; height:118px; background:url(images/selfie_chiclets.png) center center no-repeat; background-size:100%; position:relative; left:50%; margin-left:-118px; margin-top:10px; }
+
+.link1{  width:320px; height:242px; margin-left:-160px; margin-top:10px;}
+
+.btcomenzar{ width:217px; height:79px;  margin-left:-108px; margin-top:10px;}
+
+.link2{  width:320px; height:383px; margin-left:-160px; margin-top:10px;}
+
+.parabotoneschicos{ width:320px; height:79px; margin-left:-160px; margin-top:10px;}
+
+.btbotonesmaschicos{width:126px; height:79px; }
+
+
+
+.flechafotostodas{  width:20px; height:70px; top:42px; }
+
+.recuadrofoto{  width:240px; height:240px; margin-left:-120px; margin-top:40px; }
+
+.fotogrande{width:198px; height:198px; margin-left:-99px; top:21px;}
+
+.btgrandes{  width:218px; height:63px; margin-left:-109px; margin-top:30px;}
+  
+#sacudir{  width:320px; height:480px;  margin-left:-160px;}
+
+.bticonoscompartir{ padding:33px;}
+
+.backcompartir{ height:25px;}
+
+.backgroundfoto{width:198px; height:198px; margin-left:-99px; top:21px;}
+
+.fotorecortada{width:198px; height:198px;}
+
+
+.baseform{ width:320px; height:67px; margin-left:-160px;} 
+
+.facepto{height:35px;}
+
+.form1{  width:146px; height:35px;  top:6px; right:42px;  line-height:35px; font-size:20px; padding-left:20px;}
+
+.btenviar{width:320px; height:67px; margin-left:-160px;}
+
+.facento{
+	width:25px;
+	height:25px;
+	left: 48px;
+	top: 6px;
+}
+
+.flechavolver{  width:20px; height:70px; top:42px; }
+
+
+/*18 de junio*/
+.recuadrofoto3{  width:240px; height:313px; margin-left:-120px;}
+
+.fotogrande2{width:198px; height:198px; margin-left:-99px; top:80px;}
+
+.aclaracion{ width:320px; height:66px; margin-left:-160px; top:-38px;}
+
+.btreload{  width:118px; height:32px; bottom:4px; right:20px;}
+
+.controlador{  width:198px; height:15px;  top:-40px; margin-left:-99px;}
+
+}

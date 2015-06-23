@@ -1,0 +1,68 @@
+@media (min-width:641px) { 
+
+#cajabasedetodo{  width:641px; height:961px;  margin-left:-320px;}
+
+.logolanding{ display:block; width:474px; height:237px; background:url(images/selfie_chiclets.png) center center no-repeat; background-size:100%; position:relative; left:50%; margin-left:-237px; margin-top:10px; }
+
+.link1{  width:641px; height:486px; margin-left:-320px; margin-top:10px;}
+
+.btcomenzar{ width:436px; height:158px;  margin-left:-218px; margin-top:10px;}
+
+.link2{  width:641px; height:767px; margin-left:-320px; margin-top:10px;}
+
+.parabotoneschicos{ width:641px; height:158px; margin-left:-320px; margin-top:10px;}
+
+.btbotonesmaschicos{width:253px; height:158px; }
+
+
+.flechafotostodas{  width:42px; height:139px; top:85px; }
+
+.recuadrofoto{  width:482px; height:482px; margin-left:-241px; margin-top:82px; }
+
+.fotogrande{width:396px; height:396px; margin-left:-198px; top:43px;}
+
+.btgrandes{  width:436px; height:126px; margin-left:-218px; margin-top:30px;}
+
+#sacudir{  width:641px; height:961px;  margin-left:-320px;}
+
+.bticonoscompartir{ padding:67px;}
+
+.backcompartir{ height:55px;}
+
+.backgroundfoto{width:396px; height:396px; margin-left:-198px; top:43px;}
+
+.fotorecortada{width:396px; height:396px; }
+
+
+.baseform{ width:641px; height:134px; margin-left:-320px;} 
+
+.facepto{height:71px;}
+
+.form1{  width:292px; height:71px;  top:12px; right:85px;  line-height:71px; font-size:30px; padding-left:40px;}
+
+.btenviar{width:641px; height:134px; margin-left:-320px;}
+
+.facento{
+	width:51px;
+	height:51px;
+	left: 96px;
+	top: 12px;
+}
+
+.flechavolver{  width:42px; height:139px; top:85px; }
+
+
+/*18 de junio*/
+
+.recuadrofoto3{   width:482px; height:630px; margin-left:-241px;}
+
+.fotogrande2{width:396px; height:396px; margin-left:-198px; top:160px;}
+
+.aclaracion{ width:641px; height:66px; margin-left:-320px; top:-50px;}
+
+.btreload{  width:237px; height:54px; bottom:13px; right:40px;}
+
+.controlador{  width:396px; height:15px;  top:-75px; margin-left:-198px;}
+
+
+}

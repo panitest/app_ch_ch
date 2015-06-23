@@ -1,0 +1,87 @@
+@media (min-width:811px) {
+	
+#cajabasedetodo{ display:block; width:810px; height:1215px; position:relative; left:50%; margin-left:-405px; overflow:hidden;}
+
+.logolanding{ display:block; width:600px; height:300px; background:url(images/selfie_chiclets.png) center center no-repeat; background-size:100%; position:relative; left:50%; margin-left:-300px; margin-top:30px; }
+
+.link1{ display:block; width:810px; height:615px; background: url(images/text_pag1.png) center center no-repeat; background-size:100%; position:relative; left:50%; margin-left:-405px; margin-top:30px;}
+
+.link2{ display:block; width:810px; height:970px; background: url(images/text_pag2.png) center center no-repeat; background-size:100%; position:relative; left:50%; margin-left:-405px; margin-top:30px;}
+
+.btcomenzar{ display:block; background:url(images/bt_comenzar.png) center center; background-size:100%; width:550px; height:200px; position:relative; left:50%; margin-left:-275px; margin-top:30px; cursor:pointer;}
+.btcomenzar:hover{ filter:alpha(opacity=50); opacity:0.5;}
+
+.parabotoneschicos{ display:block; width:810px; height:200px;  position:relative; text-align:center; left:50%; margin-left:-405px; margin-top:30px;}
+
+.btbotonesmaschicos{display: inline-block;  width:320px; height:200px; position:relative; cursor:pointer; }
+.btbotonesmaschicos:hover{ filter:alpha(opacity=50); opacity:0.5;}
+
+.sacafoto{ background: url(images/bt_sacarfoto.png) center center; background-size:100%;}
+.elegirfoto{ background: url(images/bt_elegirfoto.png) center center; background-size:100%;}
+
+.flechafotostodas{ display:block; position:absolute; width:53px; height:176px; background:url(images/flecha.jpg) center center no-repeat; top:108px; left:0px; cursor:pointer;}
+.flechafotostodas:hover{ filter:alpha(opacity=50); opacity:0.5;}
+
+.recuadrofoto{ display:block; position:relative; background:url(images/recuadro_foto_grande.png) center center no-repeat; width:610px; height:610px; background-size:100%; position:relative; left:50%; margin-left:-305px; margin-top:100px; }
+
+.btgrandes{ display:block; width:550px; height:160px; position:relative; left:50%; margin-left:-275px; margin-top:30px; cursor:pointer;}
+.btgrandes:hover{ filter:alpha(opacity=50); opacity:0.5;}
+
+.fotogrande{display:block; position:relative; background: url(images/bradley.jpg) center center no-repeat; width:500px; height:500px; background-size:100%; position:relative; left:50%; margin-left:-250px; top:55px;}
+  
+.descubrirfoto{background: url(images/bt_descubrirfondo.png) center center; background-size:100%;}
+
+.sacarotrafoto{background:url(images/bt_sacarotrafoto.png) center center; background-size:100%;}
+
+#sacudir{ display:block; width:810px; height:1215px; position:relative; left:50%; margin-left:-405px; overflow:hidden; background:url(images/chiclets-para-sacudir.jpg) center center no-repeat; background-size:100%; cursor:pointer;}
+
+.backgroundfoto{display:block;  width:500px; height:500px; background-size:100%; position:relative; left:50%; margin-left:-250px; top:55px;}
+
+.fotorecortada{display:block; width:500px; height:500px; background-size:100%; position:absolute; top:0px; left:0px;}
+
+.backcompartir{background:url(images/compartiryparticipar.png) center center; background-size:100%; height:60px;}
+
+.bticonoscompartir{display: inline-block; padding:85px; position:relative; cursor:pointer;}
+.bticonoscompartir:hover{ filter:alpha(opacity=50); opacity:0.5;}
+
+.icfacebook{ background:url(images/ic_facebook.png) center center no-repeat; background-size:80%;}
+.ictwitter{ background:url(images/ic_twitter.png) center center no-repeat; background-size:80%;}
+.icinstagram{ background:url(images/ic_instagram.png) center center no-repeat; background-size:80%;}
+
+.baseform{display:block; width:810px; height:170px;  position:relative; left:50%; margin-left:-405px;} 
+.fnombre{ background:url(images/form_nombre.png) center center no-repeat; background-size:100%;}
+.fmail{background: url(images/form_email.png) center center no-repeat; background-size:100%;}
+.ftelefono{background: url(images/form_telefono.png) center center no-repeat; background-size:100%;}
+.facepto{background: url(images/form_acepto.png)center center no-repeat; background-size:100%; height:90px;}
+.form1{ display:block; width:370px; height:90px; position:absolute; top:15px; right:108px; background:none; border:none; line-height:90px; font-size:40px; font-weight:700; color:#EF3E42; padding-left:50px;}
+
+.btenviar{display:block; width:810px; height:170px; background:url(images/bt_enviar_datos.png) center center no-repeat; background-size:100%; cursor:pointer;  position:relative; left:50%; margin-left:-405px;}
+
+.facento{
+	display:block;
+	width:65px;
+	height:65px;
+	background:url(images/ic_acento.png) center center no-repeat; background-size:100%; cursor:pointer;
+	position:absolute;
+	left: 121px;
+	top: 15px;
+}
+
+.flechavolver{ display:block; position:absolute; width:53px; height:176px; background:url(images/flecha.jpg) center center no-repeat; top:108px; right:0px; cursor:pointer;}
+.flechavolver:hover{ filter:alpha(opacity=50); opacity:0.5;}
+
+/*18 de junio*/
+.continuar{ background: url(images/bt_continuar.png) center center; background-size:100%;}
+
+.recuadrofoto3{ display:block; position:relative; background: url(images/recuadro_foto_grande2.png) center center no-repeat; width:610px; height:798px; background-size:100%; position:relative; left:50%; margin-left:-305px;  }
+
+.fotogrande2{display:block; position:relative; background: url(images/bradley.jpg) center center no-repeat; width:500px; height:500px; background-size:100%; position:relative; left:50%; margin-left:-250px; top:200px;}
+
+.aclaracion{ display:block; width:810px; height:66px; background:url(images/podes-corregir.png) center center no-repeat; background-size:100%; position:absolute; left:50%; margin-left:-405px; top:-50px;}
+
+.btreload{ display:block; background:url(images/bt_deshacer_cambios.png) center center no-repeat; width:300px; height:81px; cursor:pointer; position:absolute; bottom:15px; right:40px;}
+.btreload:hover{ filter:alpha(opacity=50); opacity:0.5;}
+
+.controlador{ display:block; width:500px; height:20px; background-color:#C00; position:absolute; top:-90px; left:50%; margin-left:-250px;}
+
+}

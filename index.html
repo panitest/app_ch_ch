@@ -1,152 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Capture Photo</title>
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>Chiclets</title>
+    <link rel="stylesheet"  href="chiclets.css" type="text/css" charset="utf-8" />
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="estilo_320.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="estilo_481.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="estilo_641.css" type="text/css" charset="utf-8" />
     <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/shake.js"></script>
+    <script type="text/javascript" src="js/panino.js"></script>
+	<script type="text/javascript" src="js/comunes.js"></script>
+    <script type="text/javascript" src="js/paninoAJAX.js"></script>
+	<script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" charset="utf-8">
-
-    var pictureSource;   // picture source
-    var destinationType; // sets the format of returned value 
-
-    // Wait for PhoneGap to connect with the device
-    //
-    document.addEventListener("deviceready",onDeviceReady,false);
-
-    // PhoneGap is ready to be used!
-    //
-    function onDeviceReady() {
-		alert(123);
-		pictureSource=navigator.camera.PictureSourceType;
-        destinationType=navigator.camera.DestinationType;
-		
-		var element = document.getElementById('deviceIsReady');
-		element.innerHTML = 'Watching shake movement...';
-		
-		shake.startWatch(onDetected);
-    }
-
-    // Called when a photo is successfully retrieved
-    //
-    function onPhotoDataSuccess(imageData) {
-		//alert(imageData);
-      // Get image handle
-      //
-      var smallImage = document.getElementById('smallImage');
-
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
-
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-    }
-    
-	// Called when a photo is successfully retrieved
-    //
-    function onPhotoFileSuccess(imageData) {
-      // Get image handle
-      console.log(JSON.stringify(imageData));
-      
-   	  // Get image handle
-      //
-      var smallImage = document.getElementById('smallImage');
-
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
-
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      smallImage.src = imageData;
-    }
-
-    // Called when a photo is successfully retrieved
-    //
-    function onPhotoURISuccess(imageURI) {
-      // Uncomment to view the image file URI 
-      // console.log(imageURI);
-
-      // Get image handle
-      //
-      var largeImage = document.getElementById('largeImage');
-
-      // Unhide image elements
-      //
-      largeImage.style.display = 'block';
-
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      largeImage.src = imageURI;
-    }
-
-    // A button will call this function
-    //
-    function capturePhotoWithData() {
-      // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
-    }
-
-    function capturePhotoWithFile() {
-        navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
-    }
-    
-    // A button will call this function
-    //
-    function getPhoto(source) {
-      // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
-        destinationType: destinationType.FILE_URI,
-        sourceType: source });
-    }
-
-    // Called if something bad happens.
-    // 
-    function onFail(message) {
-      alert('Failed because: ' + message);
-    }
-
-    function onDetected() {
-		var element = document.getElementById('shakeData');
-		element.innerHTML = 'It\'s happening! <p><button type="button" onclick="clearShakeData();">Clear</button></p>'
-	}
-	
-	function clearShakeData(){
-		document.getElementById('shakeData').innerHTML = '';
-	}
-	function getDataIm(img,idDest){
-		var canvas=document.getElementById('canvas');
-		var ctx=canvas.getContext('2d');
-		ctx.drawImage(img,0,0);
-		var canvasData = canvas.toDataURL();
-		canvasData = '';
-		if (canvasData === 'data:,' || canvasData.length < 10) {
-			window.canvasplugin(canvas, offset, 'image/png', function(val) {
-				canvasData = val.data;
-			});
-		}
-		
-		document.getElementById(idDest).src=canvasData;
-		document.getElementById(idDest).style.display='block';
+	function getPage(p){
+		request(
+			p,
+			function(r){
+				$('contenedorgeneral').innerHTML=r;
+			},
+			{}
+		);
 	}
     </script>
   </head>
   <body>
-  <canvas id="canvas"></canvas>
-    <button onClick="capturePhotoWithData();">Capture Photo With Image Data</button> <br>
-    <button onClick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br><!--esta funca -->
-    <button onClick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
-    <button onClick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
-    <button onClick="getDataIm(document.getElementById('smallImage'),'largeImage')">testData</button><br>
-    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-    <img style="display:none;" id="largeImage" src="" />
-    <div id="deviceIsReady">Loading...</div>
-    <p id="shakeData">
-	</p>
+  	<div id="contenedorgeneral">
+        <div id="cajabasedetodo">
+        	<div class="logolanding"></div>
+        	<div class="link1"></div>
+        	<div class="btcomenzar" onclick="getPage('2.html')"></div>
+        </div>
+	</div>
   </body>
 </html>
