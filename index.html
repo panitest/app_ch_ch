@@ -67,11 +67,18 @@
 		);
 	}
 	function enviar(){
-		//if($('foto').value.length>3){
+		/*if($('foto').value.length>3){
 			$('loadfotoav').style.display='block';
 			document.body.style.cursor="wait";
 			$('form').submit();
-		//}
+		}*/
+		request(
+			'http://applicationslive.com/chch/proceso2.php',
+			function(r){
+				alert(r);	
+			},
+			{'proceso':'upfileperfil'}
+		);
 	}
 	function continuar(){
 		alert('ok');
