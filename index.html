@@ -425,11 +425,11 @@ input[type=range]:focus::-ms-fill-upper {
 		
 		//dataURItoBlob
 		
-		var blob = dataURItoBlob(ns.imagen);
+		/*var blob = dataURItoBlob(ns.imagen);
 		var urlCreator = window.URL || window.webkitURL;
 		var imageUrl = urlCreator.createObjectURL( blob );
-		$('im').src=imageUrl;
-		/*$('im').src=ns.imagen;*/
+		$('im').src=imageUrl;*/
+		$('im').src=ns.imagen;
 		
 	}
 	function doOnOrientationChange()
