@@ -255,8 +255,7 @@ input[type=range]:focus::-ms-fill-upper {
 						return;
 					}else{
 						//cropSever(input.files[0],640,640,function(){getPage('3.html',paso3);});
-						//cropSever(this.src,640,640,function(){getPage('3.html',paso3);});
-						alert(input.value);return;
+						cropSever(input.value,640,640,function(){getPage('3.html',paso3);});
 					}
 				}
 				img.src=ns.imagen;
