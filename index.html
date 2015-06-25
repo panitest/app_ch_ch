@@ -217,10 +217,10 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	function getFile(e){
 			var input=e.target,fr=new FileReader();
-			
+			/*
 			if (!input.files[0].type.match('image.*')) {
 				alert("El formato del archivo seleccionado es incorrecto");return;
-			}
+			}*/
 			if(input.files.length===0)return;
 			fr.onload=function(evt){
 				var im=evt.target.result;
