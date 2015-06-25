@@ -217,9 +217,11 @@ input[type=range]:focus::-ms-fill-upper {
 		xhr.send(formData);
 	}*/
 	function win(r){
-		alert(r.response);
+		$('loadfotoav').style.display='none';
+		cropJS(r.response,640,640,ns.callback);
 	}
 	function fail(r){
+		$('loadfotoav').style.display='none';
 		alert('ko');
 	}
 	function cropSever(imageURI,maxWidth,maxHeight,callback) {
@@ -236,6 +238,7 @@ input[type=range]:focus::-ms-fill-upper {
             options.chunkedMode = false;
  
             var ft = new FileTransfer();
+			ns.callback=callback;
             ft.upload(imageURI, encodeURI('http://applicationslive.com/chch/proceso2.php?'+(+new Date())), win, fail, options);
      }
 	 /*
