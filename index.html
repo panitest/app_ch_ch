@@ -516,7 +516,7 @@ input[type=range]:focus::-ms-fill-upper {
 			//$('blocklandscape').style.display='none';
 			break; 
 		}
-		if(ns.paso==3){paso3();}
+		if(ns.paso==3){paso3();removeBackground(document.getElementById('im'), document.getElementById('canvas'),20);document.getElementById('tolerance').value=20;}
 	  }
 
   window.addEventListener('orientationchange', doOnOrientationChange);
