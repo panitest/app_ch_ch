@@ -304,6 +304,14 @@ input[type=range]:focus::-ms-fill-upper {
 		request(
 			p,
 			function(r){
+				switch(p){
+					case '2.html':
+					ns.paso=2;
+					break;
+					case '3.html':
+					ns.paso=3;
+					break;
+				}
 				$('contentapp').innerHTML=r;
 				if(typeof callback=='function'){
 					callback();
@@ -493,6 +501,7 @@ input[type=range]:focus::-ms-fill-upper {
 		/*$('im').src=ns.imagen;*/
 		
 	}
+	ns.paso=1;
 	function doOnOrientationChange()
 	  {
 		switch(window.orientation) 
@@ -500,13 +509,14 @@ input[type=range]:focus::-ms-fill-upper {
 		  case -90:
 		  case 90:
 			//alert('landscape');
-			$('blocklandscape').style.display='block';
+			//$('blocklandscape').style.display='block';
 			break; 
 		  default:
 			//alert('portrait');
-			$('blocklandscape').style.display='none';
+			//$('blocklandscape').style.display='none';
 			break; 
 		}
+		if(ns.paso==3){paso3();}
 	  }
 
   window.addEventListener('orientationchange', doOnOrientationChange);
