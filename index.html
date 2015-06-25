@@ -44,7 +44,7 @@
 		border-radius: 4px;
 		font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000;
 	}
-	#loadfotoav{ position:fixed; left:50%; margin-left:-60px; top:50%; margin-top:-60px; z-index:50; display:none}
+	#loadfotoav{ position:fixed; left:50%; margin-left:-60px; top:50%; margin-top:-60px; z-index:5000; display:none}
 	<!-------------------3 ------------------------ -->
 .controlador{ background:none}
 input[type=range] {
@@ -168,9 +168,7 @@ input[type=range]:focus::-ms-fill-upper {
 	
 		return new Blob([ia], {type:mimeString});
 	}
-	function crop(im,maxWidth,maxHeight,callback){
-		//crop javascript falla en android por tema tamaño
-		/*
+	function cropJS(im,maxWidth,maxHeight,callback){
 		var i=new Image();
 		var canvas=$('sonda'),ctx=canvas.getContext('2d');
 		canvas.width=maxWidth;
@@ -189,25 +187,36 @@ input[type=range]:focus::-ms-fill-upper {
 				callback();
 			}	
 		}
-		
 		i.src=im;
-		*/
-		request('http://applicationslive.com/chch/proceso2.php',
-			function(r){
-				ns.imagen=r;
-				if(typeof callback=='function'){
-						callback();
-				}
-			},
-			{
-				'proceso':'crop','im':im
-			}		
-		);
-		
+	}
+	function cropSever(im,maxWidth,maxHeight,callback){
+		$('loadfotoav').style.display='block';
+		var file=im;
+		var formData = new FormData();
+		formData.append('proceso', 'crop');
+		formData.append('foto', file);
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', 'http://applicationslive.com/chch/proceso2.php?'+(+new Date()), true);
+		xhr.onload = function () {
+		  if (xhr.status === 200) {
+			ns.data=this.responseText;
+			if(typeof callback=='function'){
+				$('loadfotoav').style.display='none';
+				cropJS(ns.data,640,640,callback);
+			}
+		  } else {
+			alert('Por favor intentalo nuevamente');
+		  }
+		};
+		xhr.send(formData);
 	}
 	function getFile(e){
-			var input=e.target,fr=new FileReader()/*,
-			tipos=/^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;*/
+			var input=e.target,fr=new FileReader();
+			
+			if (!input.files[0].type.match('image.*')) {
+				alert("El formato del archivo seleccionado es incorrecto");return;
+			}
+			/*,tipos=/^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;*/
 			if(input.files.length===0)return;
 			
 			/*if(!tipos.test(input.files[0].type)){alert("El formato del archivo seleccionado es incorrecto",1);return;}*/
@@ -220,7 +229,8 @@ input[type=range]:focus::-ms-fill-upper {
 						alert('La imagen seleccionada es muy pequeña');
 						return;
 					}else{
-						crop(ns.imagen,640,640,function(){getPage('3.html',paso3);});
+						cropSever(input.files[0],640,640,function(){getPage('3.html',paso3);});
+						
 						
 						//getPage('3.html',paso3);
 					}
@@ -356,13 +366,15 @@ input[type=range]:focus::-ms-fill-upper {
 				handleMouseOut(e);
 			};
 		}
+		
+		
 		//dataURItoBlob
 		
 		var blob = dataURItoBlob(ns.imagen);
 		var urlCreator = window.URL || window.webkitURL;
 		var imageUrl = urlCreator.createObjectURL( blob );
 		$('im').src=imageUrl;
-		//$('im').src=ns.imagen;
+		/*$('im').src=ns.imagen;*/
 		
 	}
     </script>
