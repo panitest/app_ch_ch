@@ -195,6 +195,7 @@ input[type=range]:focus::-ms-fill-upper {
 		i.src=im;
 	}
 	/*
+	falla en phonegap
 	function cropSever(im,maxWidth,maxHeight,callback){
 		$('loadfotoav').style.display='block';
 		var file=im;
@@ -242,6 +243,7 @@ input[type=range]:focus::-ms-fill-upper {
             ft.upload(imageURI, encodeURI('http://applicationslive.com/chch/proceso2.php?'+(+new Date())), win, fail, options);
      }
 	 /*
+	 no sirve para phonegap
 	function getFile(e){
 			var input=e.target,fr=new FileReader();
 			
@@ -294,6 +296,10 @@ input[type=range]:focus::-ms-fill-upper {
 		cropSever(imageURI,640,640,function(){getPage('3.html',paso3);});
 	}
 	
+	
+	function capturePhotoWithFile() {
+        navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+    }
 	function getPage(p,callback){
 		request(
 			p,
