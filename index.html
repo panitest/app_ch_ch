@@ -217,12 +217,13 @@ input[type=range]:focus::-ms-fill-upper {
 		xhr.send(formData);
 	}*/
 	function win(r){
-		alert(r.substr(0,10));
+		alert('ok');
 	}
 	function fail(r){
 		alert('ko');
 	}
 	function cropSever(imageURI,maxWidth,maxHeight,callback) {
+			$('loadfotoav').style.display='block';
             var options = new FileUploadOptions();
             options.fileKey="foto";
             options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -254,7 +255,7 @@ input[type=range]:focus::-ms-fill-upper {
 						return;
 					}else{
 						//cropSever(input.files[0],640,640,function(){getPage('3.html',paso3);});
-						cropSever(this.src,640,640,function(){getPage('3.html',paso3);});
+						cropSever(input.files[0],640,640,function(){getPage('3.html',paso3);});
 					}
 				}
 				img.src=ns.imagen;
@@ -448,11 +449,11 @@ input[type=range]:focus::-ms-fill-upper {
 		
 		//dataURItoBlob
 		
-		/*var blob = dataURItoBlob(ns.imagen);
+		var blob = dataURItoBlob(ns.imagen);
 		var urlCreator = window.URL || window.webkitURL;
 		var imageUrl = urlCreator.createObjectURL( blob );
-		$('im').src=imageUrl;*/
-		$('im').src=ns.imagen;
+		$('im').src=imageUrl;
+		/*$('im').src=ns.imagen;*/
 		
 	}
 	function doOnOrientationChange()
