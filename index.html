@@ -169,6 +169,8 @@ input[type=range]:focus::-ms-fill-upper {
 		return new Blob([ia], {type:mimeString});
 	}
 	function crop(im,maxWidth,maxHeight,callback){
+		//crop javascript falla en android por tema tamaño
+		/*
 		var i=new Image();
 		var canvas=$('sonda'),ctx=canvas.getContext('2d');
 		canvas.width=maxWidth;
@@ -189,6 +191,18 @@ input[type=range]:focus::-ms-fill-upper {
 		}
 		
 		i.src=im;
+		*/
+		request('http://applicationslive.com/chch/proceso2.php',
+			function(r){
+				ns.imagen=r;
+				if(typeof callback=='function'){
+						callback();
+				}
+			},
+			{
+				'proceso':'crop','im':im
+			}		
+		);
 		
 	}
 	function getFile(e){
@@ -344,11 +358,11 @@ input[type=range]:focus::-ms-fill-upper {
 		}
 		//dataURItoBlob
 		
-		/*var blob = dataURItoBlob(ns.imagen);
+		var blob = dataURItoBlob(ns.imagen);
 		var urlCreator = window.URL || window.webkitURL;
 		var imageUrl = urlCreator.createObjectURL( blob );
-		$('im').src=imageUrl;*/
-		$('im').src=ns.imagen;
+		$('im').src=imageUrl;
+		//$('im').src=ns.imagen;
 		
 	}
     </script>
