@@ -193,7 +193,7 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	function getFile(e){
 			var input=e.target,fr=new FileReader(),
-			tipos=/^image\/jpg|image\/jpeg|image\/png|image\/gif$/i;
+			tipos=/^image\/jpg|image\/pjpg|image\/jpeg|image\/png|image\/gif$/i;
 			if(input.files.length===0)return;
 			if(!tipos.test(input.files[0].type)){alert("El formato del archivo seleccionado es incorrecto",1);return;}
 			fr.onload=function(evt){
