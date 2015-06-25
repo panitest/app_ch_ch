@@ -138,7 +138,12 @@ input[type=range]:focus::-ms-fill-upper {
 #tempCanvas{ position:absolute; top:-1500px}
 #val{ position:absolute; top:-5px; font-size:10px}
 #sonda,#tempCanvas,#im{ position:absolute;top:-1500px;}
-
+#blocklandscape{ background:#FFF200; position:absolute; width:100%; height:100%; display:none; z-index:9999; text-align:center;  font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000;}
+#blocklandscape span{ position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);}
 	</style>
     <!--<script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/shake.js"></script> -->
@@ -216,10 +221,7 @@ input[type=range]:focus::-ms-fill-upper {
 			if (!input.files[0].type.match('image.*')) {
 				alert("El formato del archivo seleccionado es incorrecto");return;
 			}
-			/*,tipos=/^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;*/
 			if(input.files.length===0)return;
-			
-			/*if(!tipos.test(input.files[0].type)){alert("El formato del archivo seleccionado es incorrecto",1);return;}*/
 			fr.onload=function(evt){
 				var im=evt.target.result;
 				ns.imagen=evt.target.result;
@@ -230,9 +232,6 @@ input[type=range]:focus::-ms-fill-upper {
 						return;
 					}else{
 						cropSever(input.files[0],640,640,function(){getPage('3.html',paso3);});
-						
-						
-						//getPage('3.html',paso3);
 					}
 				}
 				img.src=ns.imagen;
@@ -324,21 +323,72 @@ input[type=range]:focus::-ms-fill-upper {
 		tempCtx.closePath();
 		tempCtx.fill();
 	}
+	function handleTouchMove(e) {
+		if (!isDown) {
+			return;
+		}
+		e.preventDefault();
+		e.stopPropagation();
+		var touch = event.targetTouches[0];
+		mouseX = (touch.pageX-offsetX) || 0;
+		mouseY = (touch.pageY-offsetY) || 0;
+		if(mouseX<0 || mouseX>document.getElementById('tempCanvas').width){
+			return;
+		}
+		if(mouseY<0 || mouseY>document.getElementById('tempCanvas').height){
+			return;
+		}
+		ctx.beginPath();
+		ctx.arc(mouseX, mouseY, 15, 0, PI2);
+		ctx.closePath();
+		ctx.fill();
+		tempCtx.beginPath();
+		tempCtx.arc(mouseX, mouseY, 15, 0, PI2);
+		tempCtx.closePath();
+		tempCtx.fill();
+	}
+	function handleTouchStart(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
+		isDown = true;
+	}
+	function handleTouchEnd(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		isDown = false;
+		tempCtx.save();
+		tempCtx.globalCompositeOperation = "source-in";
+		tempCtx.drawImage($('im'), 0, 0,640,640,0,0,document.getElementById('tempCanvas').width,document.getElementById('tempCanvas').width);
+		tempCtx.restore();
+		eliminarNoNegro();
+		ctx.drawImage(tempCanvas, 0, 0);
+	}
 	var offsetX;
 	var offsetY;
 	var tempCanvas,tempCtx;
 	var isDown = false;
 	var PI2 = Math.PI * 2;
 	var ctx;
-	
+	function getOffset(obj) {
+      var offsetLeft = 0;
+	  var offsetTop = 0;
+		do {
+		  if (!isNaN(obj.offsetLeft)) {
+			  offsetLeft += obj.offsetLeft;
+		  }
+		  if (!isNaN(obj.offsetTop)) {
+			  offsetTop += obj.offsetTop;
+		  }   
+		} while(obj = obj.offsetParent );
+		return {left: offsetLeft, top: offsetTop};
+	}   
 	function paso3(){
 		
 		$('im').onload=function(){
 			document.getElementById('tempCanvas').width=document.getElementById('canvas').width=document.getElementById('fotogrande2').offsetWidth;
 			document.getElementById('tempCanvas').height=document.getElementById('canvas').height=document.getElementById('fotogrande2').offsetHeight;
-			var pos=getElementPosition.call($('canvas'));
-			offsetX=pos.left;
-			offsetY=pos.top;
+			
 			
 			tempCanvas=document.getElementById('tempCanvas');
 			tempCtx = tempCanvas.getContext("2d");
@@ -346,7 +396,9 @@ input[type=range]:focus::-ms-fill-upper {
 			var im=new Image();
 			//im.crossOrigin = "Anonymous";
 			im.onload=function(){
-				
+				var pos=getOffset($('canvas'));
+				offsetX=pos.left;
+				offsetY=pos.top;
 				 removeBackground(this, document.getElementById('canvas'),20);
 				 tempCtx.drawImage(this, 0, 0,640,640,0,0,document.getElementById('tempCanvas').width,document.getElementById('tempCanvas').width);
 			}
@@ -365,6 +417,9 @@ input[type=range]:focus::-ms-fill-upper {
 			$("canvas").onmouseout=function (e) {
 				handleMouseOut(e);
 			};
+			$('canvas').addEvent("touchstart", handleTouchStart, false);
+			$('canvas').addEvent("touchmove", handleTouchMove, false);
+			$('canvas').addEvent("touchend", handleTouchEnd, false);
 		}
 		
 		
@@ -377,9 +432,38 @@ input[type=range]:focus::-ms-fill-upper {
 		/*$('im').src=ns.imagen;*/
 		
 	}
+	function doOnOrientationChange()
+	  {
+		switch(window.orientation) 
+		{  
+		  case -90:
+		  case 90:
+			//alert('landscape');
+			$('blocklandscape').style.display='block';
+			break; 
+		  default:
+			//alert('portrait');
+			$('blocklandscape').style.display='none';
+			break; 
+		}
+	  }
+
+  window.addEventListener('orientationchange', doOnOrientationChange);
+	onload=function(){
+		document.addEventListener('longpress', function(e) {
+    			return false;
+		});
+
+		document.addEventListener('longclick', function(e) {
+				return false;
+		});
+		doOnOrientationChange();
+	}
+	
     </script>
   </head>
   <body id="contentapp">
+  <div id="blocklandscape"><span>Por favor gire el dispositivo</span></div>
   	<div id="contenedorgeneral">
         <div id="cajabasedetodo">
         	<div class="logolanding"></div>
