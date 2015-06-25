@@ -145,8 +145,8 @@ input[type=range]:focus::-ms-fill-upper {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);}
 	</style>
-    <!--<script type="text/javascript" src="phonegap.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/shake.js"></script> -->
+    <script type="text/javascript" src="phonegap.js"></script>
+    <!--<script type="text/javascript" charset="utf-8" src="js/shake.js"></script> -->
     <script type="text/javascript" src="js/panino.js"></script>
 	<script type="text/javascript" src="js/comunes.js"></script>
     <script type="text/javascript" src="js/paninoAJAX.js"></script>
@@ -236,14 +236,12 @@ input[type=range]:focus::-ms-fill-upper {
             options.chunkedMode = false;
  
             var ft = new FileTransfer();
-            ft.upload(imageURI, 'http://applicationslive.com/chch/proceso2.php?'+(+new Date()), win, fail, options);
+            ft.upload(imageURI, encodeURI('http://applicationslive.com/chch/proceso2.php?'+(+new Date())), win, fail, options);
      }
+	 /*
 	function getFile(e){
 			var input=e.target,fr=new FileReader();
-			/*
-			if (!input.files[0].type.match('image.*')) {
-				alert("El formato del archivo seleccionado es incorrecto");return;
-			}*/
+			
 			if(input.files.length===0)return;
 			fr.onload=function(evt){
 				var im=evt.target.result;
@@ -263,6 +261,36 @@ input[type=range]:focus::-ms-fill-upper {
 			}
 			fr.readAsDataURL(input.files[0]);
 	}
+	*/
+	var pictureSource;   
+    var destinationType; 
+	
+	document.addEventListener("deviceready",onDeviceReady,false);
+	
+	function onDeviceReady() 
+	{
+		pictureSource=navigator.camera.PictureSourceType;
+		destinationType=navigator.camera.DestinationType;
+	}
+	
+	
+	function getPhoto(source) 
+	{
+		navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
+		destinationType: destinationType.FILE_URI,
+		sourceType: source });
+	}
+	
+	function onFail(message) 
+	{
+		alert('Failed because: ' + message);
+	}
+	
+	function onPhotoURISuccess(imageURI) 
+	{
+		cropSever(imageURI,640,640,function(){getPage('3.html',paso3);});
+	}
+	
 	function getPage(p,callback){
 		request(
 			p,
