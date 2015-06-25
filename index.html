@@ -200,9 +200,10 @@ input[type=range]:focus::-ms-fill-upper {
 			fr.onload=function(evt){
 				var im=evt.target.result;
 				ns.imagen=evt.target.result;
-				alert(evt.target.result);return;
 				var img=new Image();
 				img.onload=function(){
+					alert(this.width+' '+this.height);return;
+
 					if(this.width<640 || this.height<640){
 						alert('La imagen seleccionada es muy pequeña');
 						return;
