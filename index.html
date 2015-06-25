@@ -219,11 +219,15 @@ input[type=range]:focus::-ms-fill-upper {
 	}*/
 	function win(r){
 		$('loadfotoav').style.display='none';
+		if(r.response.indexOf('data:image')==-1){
+			alert(r.response);
+			return;
+		}
 		cropJS(r.response,640,640,ns.callback);
 	}
 	function fail(r){
 		$('loadfotoav').style.display='none';
-		alert('ko');
+		alert('La imagen no pudo subirse');
 	}
 	function cropSever(imageURI,maxWidth,maxHeight,callback) {
 			$('loadfotoav').style.display='block';
@@ -288,7 +292,7 @@ input[type=range]:focus::-ms-fill-upper {
 	
 	function onFail(message) 
 	{
-		alert('Failed because: ' + message);
+		//alert('Failed because: ' + message);
 	}
 	
 	function onPhotoURISuccess(imageURI) 
