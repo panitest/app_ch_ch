@@ -193,7 +193,7 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	function getFile(e){
 			var input=e.target,fr=new FileReader(),
-			tipos=/^image\/jpg|image\/pjpg|image\/jpeg|image\/png|image\/gif$/i;
+			tipos=/^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
 			if(input.files.length===0)return;
 			if(!tipos.test(input.files[0].type)){alert("El formato del archivo seleccionado es incorrecto",1);return;}
 			fr.onload=function(evt){
