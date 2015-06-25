@@ -45,47 +45,309 @@
 		font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000;
 	}
 	#loadfotoav{ position:fixed; left:50%; margin-left:-60px; top:50%; margin-top:-60px; z-index:50; display:none}
+	<!-------------------3 ------------------------ -->
+.controlador{ background:none}
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #E33740;
+  border-radius: 25px;
+  border: 0px solid #000101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 39px;
+  border-radius: 7px;
+  background: #000;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.6px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #E33740;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #E33740;
+  border-radius: 25px;
+  border: 0px solid #000101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 39px;
+  border-radius: 7px;
+  background: #000;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 39px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #E33740;
+  border: 0px solid #000101;
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #E33740;
+  border: 0px solid #000101;
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 39px;
+  border-radius: 7px;
+  background: #000;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #E33740;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #E33740;
+}
+#tempCanvas{ position:absolute; top:-1500px}
+#val{ position:absolute; top:-5px; font-size:10px}
+#sonda,#tempCanvas,#im{ position:absolute;top:-1500px;}
+
 	</style>
-    <script type="text/javascript" src="phonegap.js"></script>
-    <script type="text/javascript" charset="utf-8" src="js/shake.js"></script>
+    <!--<script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/shake.js"></script> -->
     <script type="text/javascript" src="js/panino.js"></script>
 	<script type="text/javascript" src="js/comunes.js"></script>
     <script type="text/javascript" src="js/paninoAJAX.js"></script>
 	<script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" charset="utf-8">
-	function cerrar(){
+	ns.imagen=0;
+	ns.data;
+	function dataURItoBlob(dataURI) {
+		// convert base64/URLEncoded data component to raw binary data held in a string
+		var byteString;
+		if (dataURI.split(',')[0].indexOf('base64') >= 0)
+			byteString = atob(dataURI.split(',')[1]);
+		else
+			byteString = unescape(dataURI.split(',')[1]);
+	
+		// separate out the mime component
+		var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+	
+		// write the bytes of the string to a typed array
+		var ia = new Uint8Array(byteString.length);
+		for (var i = 0; i < byteString.length; i++) {
+			ia[i] = byteString.charCodeAt(i);
+		}
+	
+		return new Blob([ia], {type:mimeString});
+	}
+	function crop(im,maxWidth,maxHeight,callback){
+		var i=new Image();
+		var canvas=$('sonda'),ctx=canvas.getContext('2d');
+		canvas.width=maxWidth;
+		canvas.height=maxHeight;
+		i.onload=function(){
+			var w=this.width,
+			h=this.height,
+			lado=Math.min(w,h),
+			sy=(h-maxHeight)/2;
+			sx=(w-maxWidth)/2;
+			if(h==lado)sy=0;
+			if(w==lado)sx=0;
+			ctx.drawImage(i,sx,sy,lado,lado,0,0,maxWidth,maxHeight);
+			ns.imagen= canvas.toDataURL();
+			if(typeof callback=='function'){
+				callback();
+			}	
+		}
+		
+		i.src=im;
 		
 	}
-	function alerta(m){return alert(m);}
-	function getPage(p){
+	function getFile(e){
+			var input=e.target,fr=new FileReader(),
+			tipos=/^image\/jpg|image\/jpeg|image\/png|image\/gif$/i;
+			if(input.files.length===0)return;
+			if(!tipos.test(input.files[0].type)){alert("El formato del archivo seleccionado es incorrecto",1);return;}
+			fr.onload=function(evt){
+				var im=evt.target.result;
+				ns.imagen=evt.target.result;
+				var img=new Image();
+				img.onload=function(){
+					if(this.width<640 || this.height<640){
+						alert('La imagen seleccionada es muy pequeña');
+						return;
+					}else{
+						crop(ns.imagen,640,640,function(){getPage('3.html',paso3);});
+						
+						//getPage('3.html',paso3);
+					}
+				}
+				img.src=ns.imagen;
+				
+			}
+			fr.readAsDataURL(input.files[0]);
+	}
+	function getPage(p,callback){
 		request(
 			p,
 			function(r){
 				$('contentapp').innerHTML=r;
+				if(typeof callback=='function'){
+					callback();
+				}
 			},
 			{}
 		);
 	}
-	function enviar(){
-		/*if($('foto').value.length>3){
-			$('loadfotoav').style.display='block';
-			document.body.style.cursor="wait";
-			$('form').submit();
-		}*/
-		request(
-			'http://applicationslive.com/chch/proceso2.php',
-			function(r){
-				alert(r);	
-			},
-			{'proceso':'upfileperfil'}
-		);
+	function eliminarNoNegro(){
+		var imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+		var data = imageData.data;
+		for (var i = 0, n = data.length; i < n; i += 4) {
+		   if(data[i]==0 && data[i+1]==0 && data[i+2]==0){
+			data[i + 3] = 0;
+		   }else{
+			data[i + 3] = 255;   
+			}
+		}
+		tempCtx.putImageData(imageData, 0, 0);
 	}
-	function continuar(){
-		alert('ok');
+	function removeBackground(img, canvas,tolerance) {
+		var context = canvas.getContext('2d');
+		ctx = context;
+		context.drawImage(img, 0, 0,640,640,0,0,document.getElementById('tempCanvas').width,document.getElementById('tempCanvas').width);
+		var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+		var data = imageData.data;
+		var start = {
+			red: data[0],
+			green: data[1],
+			blue: data[2]
+		};
+		for (var i = 0, n = data.length; i < n; i += 4) {
+			var diff = Math.abs(data[i] - data[0]) + Math.abs(data[i + 1] - data[1]) + Math.abs(data[i + 2] - data[2]);
+			data[i + 3] = (diff * diff) / tolerance;
+		}
+		context.putImageData(imageData, 0, 0);
 	}
-	window.addEventListener('message',function(event) {
-  	 alert(event.data); // call function here
-	},false);
+	
+	function handleMouseDown(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
+		isDown = true;
+	}
+
+	function handleMouseUp(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		isDown = false;
+		tempCtx.save();
+		tempCtx.globalCompositeOperation = "source-in";
+		tempCtx.drawImage($('im'), 0, 0,640,640,0,0,document.getElementById('tempCanvas').width,document.getElementById('tempCanvas').width);
+		tempCtx.restore();
+		eliminarNoNegro();
+		ctx.drawImage(tempCanvas, 0, 0);
+	}
+
+	function handleMouseOut(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		isDown = false;
+	}
+
+	function handleMouseMove(e) {
+		if (!isDown) {
+			return;
+		}
+		e.preventDefault();
+		e.stopPropagation();
+		mouseX = parseInt( (e.offsetX || e.layerX || 0) );
+		mouseY = parseInt( (e.offsetY || e.layerY || 0) );
+		ctx.beginPath();
+		ctx.arc(mouseX, mouseY, 15, 0, PI2);
+		ctx.closePath();
+		ctx.fill();
+		tempCtx.beginPath();
+		tempCtx.arc(mouseX, mouseY, 15, 0, PI2);
+		tempCtx.closePath();
+		tempCtx.fill();
+	}
+	var offsetX;
+	var offsetY;
+	var tempCanvas,tempCtx;
+	var isDown = false;
+	var PI2 = Math.PI * 2;
+	var ctx;
+	
+	function paso3(){
+		
+		$('im').onload=function(){
+			document.getElementById('tempCanvas').width=document.getElementById('canvas').width=document.getElementById('fotogrande2').offsetWidth;
+			document.getElementById('tempCanvas').height=document.getElementById('canvas').height=document.getElementById('fotogrande2').offsetHeight;
+			var pos=getElementPosition.call($('canvas'));
+			offsetX=pos.left;
+			offsetY=pos.top;
+			
+			tempCanvas=document.getElementById('tempCanvas');
+			tempCtx = tempCanvas.getContext("2d");
+		
+			var im=new Image();
+			//im.crossOrigin = "Anonymous";
+			im.onload=function(){
+				
+				 removeBackground(this, document.getElementById('canvas'),20);
+				 tempCtx.drawImage(this, 0, 0,640,640,0,0,document.getElementById('tempCanvas').width,document.getElementById('tempCanvas').width);
+			}
+			im.src=$('im').src;
+			$("canvas").onmousedown=function (e) {
+				handleMouseDown(e);
+			};
+			
+		
+			$("canvas").onmousemove=function (e) {
+				handleMouseMove(e);
+			};
+			$("canvas").onmouseup=function (e) {
+				handleMouseUp(e);
+			};
+			$("canvas").onmouseout=function (e) {
+				handleMouseOut(e);
+			};
+		}
+		//dataURItoBlob
+		var blob = dataURItoBlob(ns.imagen);
+		var urlCreator = window.URL || window.webkitURL;
+		var imageUrl = urlCreator.createObjectURL( blob );
+		$('im').src=imageUrl;
+		
+	}
     </script>
   </head>
   <body id="contentapp">
@@ -93,7 +355,7 @@
         <div id="cajabasedetodo">
         	<div class="logolanding"></div>
         	<div class="link1"></div>
-        	<div class="btcomenzar" onclick="getPage('2.html')"></div>
+        	<div class="btcomenzar" onClick="getPage('2.html')"></div>
         </div>
 	</div>
   </body>
