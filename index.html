@@ -146,7 +146,7 @@ input[type=range]:focus::-ms-fill-upper {
   transform: translateY(-50%);}
 	</style>
     <script type="text/javascript" src="phonegap.js"></script>
-    <!--<script type="text/javascript" charset="utf-8" src="js/shake.js"></script> -->
+    <script type="text/javascript" charset="utf-8" src="js/shake.js"></script>
     <script type="text/javascript" src="js/panino.js"></script>
 	<script type="text/javascript" src="js/comunes.js"></script>
     <script type="text/javascript" src="js/paninoAJAX.js"></script>
@@ -187,7 +187,13 @@ input[type=range]:focus::-ms-fill-upper {
 			if(h==lado)sy=0;
 			if(w==lado)sx=0;
 			ctx.drawImage(i,sx,sy,lado,lado,0,0,maxWidth,maxHeight);
-			ns.imagen= canvas.toDataURL();
+			var canvasData = canvas.toDataURL();
+			if (canvasData === 'data:,' || canvasData.length < 10) {//para Android<4
+				window.canvasplugin(canvas, offset, 'image/png', function(val) {
+					canvasData = val.data;
+				});
+			}
+			ns.imagen= canvasData;
 			if(typeof callback=='function'){
 				callback();
 			}	
@@ -315,6 +321,9 @@ input[type=range]:focus::-ms-fill-upper {
 					case '3.html':
 					ns.paso=3;
 					break;
+					case '4.html':
+					ns.paso=4;
+					break;
 				}
 				$('contentapp').innerHTML=r;
 				if(typeof callback=='function'){
@@ -323,6 +332,22 @@ input[type=range]:focus::-ms-fill-upper {
 			},
 			{}
 		);
+	}
+	function saveCanvas(){
+		var canvasData = $("canvas").toDataURL();
+			if (canvasData === 'data:,' || canvasData.length < 10) {//para Android<4
+				window.canvasplugin($("canvas"), offset, 'image/png', function(val) {
+					canvasData = val.data;
+				});
+			}
+			ns.imagen= canvasData;
+	}
+	function paso5(){
+		
+	}
+	function chch(){
+		$('audio').play();
+		setTimeout(function(){ getPage('5.html',paso5)},1000);
 	}
 	function eliminarNoNegro(){
 		var imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
