@@ -597,6 +597,7 @@ input[type=range]:focus::-ms-fill-upper {
 		CajaIsDown=true;
 		$('sacudir').style.top=0;
 		AjusteY=$('sacudir').offsetHeight/2;
+		setTimeout(function(){CajaIsDown = false;},500);
 	}
 	function handleCajaMove(e){
 		if (!CajaIsDown) {
