@@ -354,7 +354,7 @@ input[type=range]:focus::-ms-fill-upper {
 	function playAudio(url,loop) {
 		var uri;
 		var my_media;
-		var l=loop?function(s){if (s === my_media.MEDIA_STOPPED){my_media.play();}}:null;
+		var l=loop?function(s){if (s === Media.MEDIA_STOPPED){my_media.play();}}:null;
 		if(ns.so=='Android'){
 			uri='/android_asset/www/'+url;
 		}else{
