@@ -351,18 +351,20 @@ input[type=range]:focus::-ms-fill-upper {
 	function paso5(){
 		
 	}
-	function playAudio(url) {
+	function playAudio(url,loop) {
 		var uri;
+		var my_media;
+		var l=loop?function(s){if (s === my_media.MEDIA_STOPPED){my_media.play();}}:null;
 		if(ns.so=='Android'){
 			uri='/android_asset/www/'+url;
 		}else{
 			uri=url;
 		}
-		var my_media = new Media(uri,
+		my_media = new Media(uri,
 				// success callback
 				 function () { },
 				// error callback
-				 function (err) { /*alert("playAudio():Audio Error: " + err.code);*/ }
+				 function (err) { /*alert("playAudio():Audio Error: " + err.code);*/ },l
 		);
 			   // Play audio
 		my_media.play();
@@ -598,7 +600,7 @@ input[type=range]:focus::-ms-fill-upper {
 		CajaIsDown=true;
 		$('sacudir').style.top=0;
 		AjusteY=$('sacudir').offsetHeight/2;
-		playAudio('sound/chch.mp3');
+		playAudio('sound/chch.mp3',1);
 	}
 	function handleCajaMove(e){
 		if (!CajaIsDown) {
