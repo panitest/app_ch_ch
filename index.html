@@ -586,8 +586,6 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	var CajaOffsetX;
 	var CajaOffsetY;
-	var ajusteX=0;
-	var ajusteY=0;
 	var CajaIsDown = false;
 	function handleCajaStart(e){
 		e.preventDefault();
@@ -596,11 +594,6 @@ input[type=range]:focus::-ms-fill-upper {
 		CajaOffsetX=pos.left;
 		CajaOffsetY=pos.top;
 		CajaIsDown=true;
-		ajusteX=getCSS(e.target,'left');
-		ajusteY=getCSS(e.target,'top');
-		var touch = event.targetTouches[0];
-		mouseX = (touch.pageX) || 0;
-		mouseY = (touch.pageY) || 0;
 	}
 	function handleCajaMove(e){
 		if (!CajaIsDown) {
@@ -609,10 +602,10 @@ input[type=range]:focus::-ms-fill-upper {
 		e.preventDefault();
 		e.stopPropagation();
 		var touch = event.targetTouches[0];
-		var X = (touch.pageX) || 0;
-		var Y = (touch.pageY) || 0;
-		$('sacudir').style.left=mouseX-X+ajusteX+'px';
-		$('sacudir').style.top=mouseY-Y+ajusteY+'px';
+		mouseX = (touch.pageX-CajaOffsetX) || 0;
+		mouseY = (touch.pageY-CajaOffsetY) || 0;
+		$('sacudir').style.left=mouseX+'px';
+		$('sacudir').style.top=mouseY+'px';
 	}
 	function handleCajaEnd(e){
 		e.preventDefault();
