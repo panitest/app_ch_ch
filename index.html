@@ -596,8 +596,8 @@ input[type=range]:focus::-ms-fill-upper {
 		CajaOffsetX=pos.left;
 		CajaOffsetY=pos.top;
 		CajaIsDown=true;
-		margLeft=document.defaultView.getComputedStyle($('sacudir'),null).getPropertyValue('margin-left');
-		margTop=document.defaultView.getComputedStyle($('sacudir'),null).getPropertyValue('margin-top');
+		margLeft=document.defaultView.getComputedStyle($('sacudir'),null).getPropertyValue('margin-left') || 0;
+		margTop=document.defaultView.getComputedStyle($('sacudir'),null).getPropertyValue('margin-top') || 0;
 	}
 	function handleCajaMove(e){
 		if (!CajaIsDown) {
