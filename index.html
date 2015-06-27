@@ -11,6 +11,8 @@
    <link rel="stylesheet" href="estilo_320.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="estilo_481.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="estilo_641.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="animate-custom.css" type="text/css" charset="utf-8" />
+
     <style>
 	label{ display:block}
 	.fileContainer {
@@ -366,8 +368,8 @@ input[type=range]:focus::-ms-fill-upper {
 		my_media.play();
 	}
 	function chch(){
+		$('chicle').className='animated swing';
 		playAudio('sound/chch.mp3');
-		//setTimeout(function(){ },1000);
 	}
 	function eliminarNoNegro(){
 		var imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
