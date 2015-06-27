@@ -587,6 +587,8 @@ input[type=range]:focus::-ms-fill-upper {
 	var CajaOffsetX;
 	var CajaOffsetY;
 	var CajaIsDown = false;
+	var margLeft=0;
+	var margTop=0;
 	function handleCajaStart(e){
 		e.preventDefault();
 		e.stopPropagation();
@@ -594,6 +596,8 @@ input[type=range]:focus::-ms-fill-upper {
 		CajaOffsetX=pos.left;
 		CajaOffsetY=pos.top;
 		CajaIsDown=true;
+		margLeft=document.defaultView.getComputedStyle($('sacudir'),null).getPropertyValue('margin-left');
+		margTop=document.defaultView.getComputedStyle($('sacudir'),null).getPropertyValue('margin-top');
 	}
 	function handleCajaMove(e){
 		if (!CajaIsDown) {
@@ -604,8 +608,8 @@ input[type=range]:focus::-ms-fill-upper {
 		var touch = e.targetTouches[0];
 		mouseX = (touch.pageX-CajaOffsetX) || 0;
 		mouseY = (touch.pageY-CajaOffsetY) || 0;
-		$('sacudir').style.left=mouseX+'px';
-		$('sacudir').style.top=mouseY+'px';
+		$('sacudir').style.left=mouseX+margLeft+'px';
+		$('sacudir').style.top=mouseY+margTop+'px';
 	}
 	function handleCajaEnd(e){
 		e.preventDefault();
