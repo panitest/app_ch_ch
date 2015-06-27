@@ -356,7 +356,7 @@ input[type=range]:focus::-ms-fill-upper {
 				// success callback
 				 function () { alert("playAudio():Audio Success"); },
 				// error callback
-				 function (err) { alert("playAudio():Audio Error: " + err); }
+				 function (err) { alert("playAudio():Audio Error: " + err.message); }
 		);
 			   // Play audio
 		my_media.play();
