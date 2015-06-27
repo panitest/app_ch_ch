@@ -352,6 +352,7 @@ input[type=range]:focus::-ms-fill-upper {
 		
 	}
 	ns.loop=1;
+	ns.reproduciendo=0;
 	function playAudio(url,loop) {
 		var uri;
 		var my_media;
@@ -363,7 +364,7 @@ input[type=range]:focus::-ms-fill-upper {
 		}
 		my_media = new Media(uri,
 				// success callback
-				 function () { },
+				 function () {ns.reproduciendo=1; },
 				// error callback
 				 function (err) { /*alert("playAudio():Audio Error: " + err.code);*/ },l
 		);
@@ -373,7 +374,9 @@ input[type=range]:focus::-ms-fill-upper {
 	function chch(){
 		$('sacudir').className='animated shake';
 		ns.loop=0;
-		playAudio('sound/chch.mp3');
+		if(!ns.reproduciendo){
+			playAudio('sound/chch.mp3');
+		}
 		setTimeout(function(){getPage('5.html',paso5);},1000);
 	}
 	function eliminarNoNegro(){
