@@ -361,11 +361,9 @@ input[type=range]:focus::-ms-fill-upper {
 		my_media.play();
 	}
 	function chch(){
-		alert(123);
-		return;
-		//$('audio').play();
 		playAudio('audio');
-		setTimeout(function(){ getPage('5.html',paso5);},1000);
+		return;
+		//setTimeout(function(){ getPage('5.html',paso5);},1000);
 	}
 	function eliminarNoNegro(){
 		var imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
