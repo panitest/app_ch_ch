@@ -360,7 +360,7 @@ input[type=range]:focus::-ms-fill-upper {
 		}
 		var my_media = new Media(uri,
 				// success callback
-				 function () {getPage('5.html',paso5); },
+				 function () { },
 				// error callback
 				 function (err) { /*alert("playAudio():Audio Error: " + err.code);*/ }
 		);
@@ -370,6 +370,7 @@ input[type=range]:focus::-ms-fill-upper {
 	function chch(){
 		$('sacudir').className='animated shake';
 		playAudio('sound/chch.mp3');
+		setTimeout(function(){getPage('5.html',paso5);},1000);
 	}
 	function eliminarNoNegro(){
 		var imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
@@ -597,7 +598,7 @@ input[type=range]:focus::-ms-fill-upper {
 		CajaIsDown=true;
 		$('sacudir').style.top=0;
 		AjusteY=$('sacudir').offsetHeight/2;
-		setTimeout(function(){CajaIsDown = false;},100);
+		playAudio('sound/chch.mp3');
 	}
 	function handleCajaMove(e){
 		if (!CajaIsDown) {
