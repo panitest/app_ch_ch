@@ -287,7 +287,6 @@ input[type=range]:focus::-ms-fill-upper {
 		pictureSource=navigator.camera.PictureSourceType;
 		destinationType=navigator.camera.DestinationType;
 		ns.so=(device.platform);
-		alert(ns.so);
 	}
 	
 	
@@ -350,24 +349,25 @@ input[type=range]:focus::-ms-fill-upper {
 	function paso5(){
 		
 	}
-	function playAudio(id) {
-		var audioElement = document.getElementById(id);
-		//var url = audioElement.getAttribute('src');
-		url='/android_asset/www/'+"sound/chch.mp3";
-		var my_media = new Media(url,
+	function playAudio(url) {
+		var uri;
+		if(ns.so=='Android'){
+			uri='/android_asset/www/'+url;
+		}else{
+			uri=url;
+		}
+		var my_media = new Media(uri,
 				// success callback
-				 function () { alert("playAudio():Audio Success"); },
+				 function () { /*alert("playAudio():Audio Success");*/ },
 				// error callback
-				 function (err) { alert("playAudio():Audio Error: " + err.code); }
+				 function (err) { /*alert("playAudio():Audio Error: " + err.code);*/ }
 		);
 			   // Play audio
 		my_media.play();
 	}
 	function chch(){
-		playAudio('maudio');
-		alert('mierda');
-		return;
-		//setTimeout(function(){ getPage('5.html',paso5);},1000);
+		playAudio('sound/chch.mp3');
+		setTimeout(function(){ getPage('5.html',paso5);},1000);
 	}
 	function eliminarNoNegro(){
 		var imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
