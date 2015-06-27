@@ -351,18 +351,18 @@ input[type=range]:focus::-ms-fill-upper {
 	function playAudio(id) {
 		var audioElement = document.getElementById(id);
 		//var url = audioElement.getAttribute('src');
-		url="/sound/chch.mp3";
+		url="sound/chch.mp3";
 		var my_media = new Media(url,
 				// success callback
 				 function () { alert("playAudio():Audio Success"); },
 				// error callback
-				 function (err) { alert("playAudio():Audio Error: " + err.message); }
+				 function (err) { alert("playAudio():Audio Error: " + err.code); }
 		);
 			   // Play audio
-		my_media.play();
+		my_media.play(url);
 	}
 	function chch(){
-		playAudio('audio');
+		playAudio('maudio');
 		alert('mierda');
 		return;
 		//setTimeout(function(){ getPage('5.html',paso5);},1000);
