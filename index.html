@@ -449,7 +449,7 @@ input[type=range]:focus::-ms-fill-upper {
 		}
 		e.preventDefault();
 		e.stopPropagation();
-		var touch = event.targetTouches[0];
+		var touch = e.targetTouches[0];
 		mouseX = (touch.pageX-offsetX) || 0;
 		mouseY = (touch.pageY-offsetY) || 0;
 		if(mouseX<0 || mouseX>document.getElementById('tempCanvas').width){
@@ -601,7 +601,7 @@ input[type=range]:focus::-ms-fill-upper {
 		}
 		e.preventDefault();
 		e.stopPropagation();
-		var touch = event.targetTouches[0];
+		var touch = e.targetTouches[0];
 		mouseX = (touch.pageX-CajaOffsetX) || 0;
 		mouseY = (touch.pageY-CajaOffsetY) || 0;
 		$('sacudir').style.left=mouseX+'px';
