@@ -584,8 +584,40 @@ input[type=range]:focus::-ms-fill-upper {
 		});
 		//doOnOrientationChange();
 	}
+	var CajaOffsetX;
+	var CajaOffsetY;
+	var CajaIsDown = false;
+	function handleCajaStart(e){
+		e.preventDefault();
+		e.stopPropagation();
+		var pos=getOffset($('sacudir'));
+		CajaOffsetX=pos.left;
+		CajaOffsetY=pos.top;
+		CajaIsDown=true;
+	}
+	function handleCajaMove(e){
+		if (!CajaIsDown) {
+			return;
+		}
+		e.preventDefault();
+		e.stopPropagation();
+		var touch = event.targetTouches[0];
+		mouseX = (touch.pageX-CajaOffsetX) || 0;
+		mouseY = (touch.pageY-CajaOffsetY) || 0;
+		$('sacudir').style.left=mouseX+'px';
+		$('sacudir').style.top=mouseY+'px';
+	}
+	function handleCajaEnd(e){
+		e.preventDefault();
+		e.stopPropagation();
+		CajaIsDown = false;
+		chch();
+	}
 	function prepareShake(){
 		shake.startWatch(chch);
+		$('sacudir').addEventListener("touchstart", handleCajaStart, false);
+		$('sacudir').addEventListener("touchmove", handleCajaMove, false);
+		$('sacudir').addEventListener("handleTouchEnd", handleCajaEnd, false);
 	}
 	
     </script>
