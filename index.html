@@ -366,7 +366,6 @@ input[type=range]:focus::-ms-fill-upper {
 		var blob = dataURItoBlob(ns.imagen);
 		var urlCreator = window.URL || window.webkitURL;
 		var imageUrl = urlCreator.createObjectURL( blob );
-		
 		$('fotogrande2inner').style.background='url('+imageUrl+') center center no-repeat';
 	}
 	function generateFusion(bg){
