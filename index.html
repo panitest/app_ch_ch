@@ -47,6 +47,8 @@
 		font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000;
 	}
 	#loadfotoav{ position:fixed; left:50%; margin-left:-60px; top:50%; margin-top:-60px; z-index:5000; display:none}
+	#mge{ font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#EE3A43; text-align:center; width:120px; height:20px; z-index:6000; position:fixed; left:50%; margin-left:-60px; top:50%;margin-top:70px; display:none;text-shadow: 1px 1px 9px rgba(255, 242, 0, 1); font-weight:bold;}
+
 	<!-------------------3 ------------------------ -->
 .controlador{ background:none}
 input[type=range] {
@@ -146,7 +148,30 @@ input[type=range]:focus::-ms-fill-upper {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);}
-	</style>
+.inAppBrowserWrap {
+  background-color: rgba(0,0,0,0.75);
+  color: rgba(235,235,235,1.0);
+}
+.inAppBrowserWrap menu {
+  overflow: auto;
+  list-style-type: none;
+  padding-left: 0;
+}
+.inAppBrowserWrap menu li {
+  font-size: 25px;
+  height: 25px;
+  float: left;
+  margin: 0 10px;
+  padding: 3px 10px;
+  text-decoration: none;
+  color: #ccc;
+  display: block;
+  background: rgba(30,30,30,0.50);
+}
+.inAppBrowserWrap menu li.disabled {
+    color: #777;
+}
+</style>
     <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/shake.js"></script>
     <script type="text/javascript" src="js/panino.js"></script>
@@ -235,6 +260,7 @@ input[type=range]:focus::-ms-fill-upper {
 	}*/
 	function win(r){
 		$('loadfotoav').style.display='none';
+		$('mge').style.display='none';
 		if(r.response.indexOf('data:image')==-1){
 			alert(r.response);
 			return;
@@ -243,10 +269,12 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	function fail(r){
 		$('loadfotoav').style.display='none';
+		$('mge').style.display='none';
 		alert('La imagen no pudo subirse');
 	}
 	function cropSever(imageURI,maxWidth,maxHeight,callback) {
 			$('loadfotoav').style.display='block';
+			$('mge').style.display='block';
             var options = new FileUploadOptions();
             options.fileKey="foto";
             options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -388,7 +416,7 @@ input[type=range]:focus::-ms-fill-upper {
 		request(
 				'http://applicationslive.com/chch/proceso2.php',
 				function(r){
-					$('verbtns').innerHTML='<a href="http://applicationslive.com/chch/finales/'+r+'">ver</a>';
+					ns.finale='http://applicationslive.com/chch/finales/'+r;
 				},
 				data
 		);

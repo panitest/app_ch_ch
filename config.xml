@@ -56,6 +56,7 @@
 	<gap:plugin name="org.apache.cordova.file-transfer" version="0.4.6" />
 	<gap:plugin name="org.apache.cordova.media" version="0.2.13" />
 	<gap:plugin name="org.apache.cordova.device" version="0.2.12" />
+	<gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
     <!--
