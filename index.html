@@ -289,6 +289,11 @@ input[type=range]:focus::-ms-fill-upper {
 		pictureSource=navigator.camera.PictureSourceType;
 		destinationType=navigator.camera.DestinationType;
 		ns.so=(device.platform);
+		ns.bgs=[];
+		var i=1,l=32;
+		for(;i<l;i++){
+			ns.bgs.push('background'+i+'.jpg');
+		}
 	}
 	
 	
@@ -347,8 +352,18 @@ input[type=range]:focus::-ms-fill-upper {
 				});
 			}
 			ns.imagen= canvasData;
+			ns.finalWidth= $("canvas").width;
+			ns.finalHeight= $("canvas").height;
+			alert(ns.finalWidth+'--'+ns.finalHeight);
+	}
+	function getRandomInt(min, max) {
+    	return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+	function selectBg(){
+		var selectedBg=ns.bgs[getRandomInt(0,30)];
 	}
 	function paso5(){
+	
 		
 	}
 	ns.loop=1;
