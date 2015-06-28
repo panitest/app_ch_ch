@@ -360,15 +360,14 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	function selectBg(){
 		var selectedBg='http://applicationslive.com/chch/bg/'+ns.bgs[getRandomInt(0,30)];
-		//alert(selectedBg);
 		//generateFusion(selectedBg);
-		/*$('fotogrande2').style.background='url('+selectedBg+') center center no-repeat;';*/
-		
+		$('fotogrande2').style.background='url('+selectedBg+') center center no-repeat';
+		$('fotogrande2').style.backgroundSize='100%';
 		var blob = dataURItoBlob(ns.imagen);
 		var urlCreator = window.URL || window.webkitURL;
 		var imageUrl = urlCreator.createObjectURL( blob );
 		
-		//$('fotogrande2inner').style.background='url('+imageUrl+') center center no-repeat;';
+		$('fotogrande2inner').style.background='url('+imageUrl+') center center no-repeat;';
 	}
 	function generateFusion(bg){
 		document.getElementById('tempCanvas').width=document.getElementById('fotogrande2').offsetWidth;
