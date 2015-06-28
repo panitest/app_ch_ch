@@ -450,10 +450,10 @@ input[type=range]:focus::-ms-fill-upper {
 		}
 		Instagram.share(ns.finaleData, 'Divertite con tus amigos y ganá uno de los 10 selfie sticks', function (err) {
 			if (err) {
-				alert("not shared");
-			} else {
-				alert("shared");
+				alert("La imagen no pudo compartirse");
+				return;
 			}
+			alert("shared");
 		});
 	}
 	function generateFusion(bg){
