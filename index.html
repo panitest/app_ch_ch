@@ -383,6 +383,16 @@ input[type=range]:focus::-ms-fill-upper {
 		var imageUrl = urlCreator.createObjectURL( blob );
 		$('fotogrande2inner').style.background='url('+imageUrl+') center center no-repeat';
 	}
+	function saveselfie(canvasData){
+		var data={'proceso':'saveselfie','src':canvasData}
+		request(
+				'http://applicationslive.com/chch/proceso2.php',
+				function(r){
+					$('verbtns').innerHTML='<a href="http://applicationslive.com/chch/finales/'+r+'">ver</a>';
+				},
+				data
+		);
+	}
 	function generateFusion(bg){
 		document.getElementById('tempCanvas').width=document.getElementById('fotogrande2').offsetWidth;
 		document.getElementById('tempCanvas').height=document.getElementById('fotogrande2').offsetHeight;
@@ -409,6 +419,7 @@ input[type=range]:focus::-ms-fill-upper {
 						canvasData = val.data;
 					});
 				}
+				saveselfie(canvasData);
 				
 			};
 			recorte.src=ns.imagen;
