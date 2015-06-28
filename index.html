@@ -331,6 +331,17 @@ input[type=range]:focus::-ms-fill-upper {
 		for(;i<l;i++){
 			ns.bgs.push('background'+i+'.jpg');
 		}
+		
+		Instagram.isInstalled(function (err, installed) {
+			if (installed) {
+				ns.instagramInstalado=1; // installed app version on Android
+			} else {
+				ns.instagramInstalado=0;
+			}
+		});
+		
+		
+		
 	}
 	
 	
@@ -421,6 +432,7 @@ input[type=range]:focus::-ms-fill-upper {
 					$('mge').style.display='none';
 					$('verbtns').style.display='block';
 					ns.finale='http://applicationslive.com/chch/finales/'+r;
+					ns.finaleData=canvasData;
 				},
 				data
 		);
@@ -430,6 +442,19 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	function compartirTwitter(){
 		var ref=window.open('http://applicationslive.com/chch/tw/redirect.php?f='+ns.finale.split('/').pop()+'&rnd='+(+new Date()), '_blank', 'location=yes');
+	}
+	function compartirInstagram(){
+		if(!ns.instagramInstalado){
+			alert('Instagram no está disponible en el dispositivo.');
+			return;
+		}
+		Instagram.share(ns.finaleData, 'Divertite con tus amigos y ganá uno de los 10 selfie sticks', function (err) {
+			if (err) {
+				alert("not shared");
+			} else {
+				alert("shared");
+			}
+		});
 	}
 	function generateFusion(bg){
 		$('loadfotoav').style.display='block';
