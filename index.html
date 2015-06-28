@@ -429,7 +429,7 @@ input[type=range]:focus::-ms-fill-upper {
 		var ref=window.open('https://www.facebook.com/dialog/feed?app_id=1594877000767526&link='+encodeURIComponent('https://apps.facebook.com/selfiechiclets/')+'&display=popup&redirect_uri='+encodeURIComponent('http://applicationslive.com/chch/close3.php')+'&picture='+encodeURIComponent(ns.finale)+'&description='+encodeURIComponent('Divertite con tus amigos y ganá uno de los 10 selfie sticks')+'&caption='+encodeURIComponent('Selfie Chiclets'), '_blank', 'location=yes' );
 	}
 	function compartirTwitter(){
-		var ref=window.open('http://applicationslive.com/chch/twitter.php?f='+ns.finale.split('/').pop(), '_blank', 'location=yes');
+		var ref=window.open('http://applicationslive.com/chch/twitter.php?f='+ns.finale.split('/').pop()+'&rnd='+(+new Date()), '_blank', 'location=yes');
 	}
 	function generateFusion(bg){
 		$('loadfotoav').style.display='block';
