@@ -419,12 +419,12 @@ input[type=range]:focus::-ms-fill-upper {
 	function paso5(){
 		selectBg();
 	}
-	ns.loop=1;
-	ns.reproduciendo=0;
+	//ns.loop=1;
+	//ns.reproduciendo=0;
 	function playAudio(url,loop) {
 		var uri;
 		var my_media;
-		var l=loop?function(s){if (s === Media.MEDIA_STOPPED && ns.loop){my_media.play();}}:null;
+		var l=loop?function(s){if (s === Media.MEDIA_STOPPED /*&& ns.loop*/){my_media.play();}}:null;
 		if(ns.so=='Android'){
 			uri='/android_asset/www/'+url;
 		}else{
@@ -432,7 +432,7 @@ input[type=range]:focus::-ms-fill-upper {
 		}
 		my_media = new Media(uri,
 				// success callback
-				 function () {ns.reproduciendo=1; },
+				 function () {/*ns.reproduciendo=1;*/ getPage('5.html',paso5);},
 				// error callback
 				 function (err) { /*alert("playAudio():Audio Error: " + err.code);*/ },l
 		);
@@ -442,10 +442,10 @@ input[type=range]:focus::-ms-fill-upper {
 	function chch(){
 		$('sacudir').className='animated shake';
 		
-		if(!ns.reproduciendo){
-			playAudio('sound/chch.mp3');
-		}
-		setTimeout(function(){ns.loop=0;getPage('5.html',paso5);ns.reproduciendo=0;},1000);
+		//if(!ns.reproduciendo){
+		playAudio('sound/chch.mp3');
+		//}
+		//setTimeout(function(){ns.loop=0;getPage('5.html',paso5);/*ns.reproduciendo=0;*/},1000);
 	}
 	function eliminarNoNegro(){
 		var imageData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
