@@ -417,11 +417,14 @@ input[type=range]:focus::-ms-fill-upper {
 		
 	}
 	function paso5(){
+		ns.reproduciendo=0;
 		selectBg();
 	}
 	//ns.loop=1;
-	//ns.reproduciendo=0;
+	ns.reproduciendo=0;
 	function playAudio(url,loop) {
+		if(ns.reproduciendo){return;}
+		ns.reproduciendo=1;
 		var uri;
 		var my_media;
 		var l=loop?function(s){if (s === Media.MEDIA_STOPPED /*&& ns.loop*/){my_media.play();}}:null;
