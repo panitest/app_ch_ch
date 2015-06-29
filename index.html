@@ -462,7 +462,9 @@ input[type=range]:focus::-ms-fill-upper {
 						if ( name ) {
 							clearInterval( loop );
 							ref.close();
-							
+							if(name=='ok'){
+								alert('ok');
+							}
 						}
 					}
 				 );
