@@ -439,6 +439,39 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	function compartirFacebook(){
 		var ref=window.open('https://www.facebook.com/dialog/feed?app_id=1594877000767526&link='+encodeURIComponent('https://apps.facebook.com/selfiechiclets/')+'&display=popup&redirect_uri='+encodeURIComponent('http://applicationslive.com/chch/close3.php')+'&picture='+encodeURIComponent(ns.finale)+'&description='+encodeURIComponent('Divertite con tus amigos y ganá uno de los 10 selfie sticks')+'&caption='+encodeURIComponent('Selfie Chiclets'), '_blank', 'location=yes' );
+		
+		
+		ref.addEventListener( "loadstop", function() {
+
+           // Clear out the name in localStorage for subsequent opens.
+		    ref.executeScript({ code: "localStorage.setItem( 'compfb', '' );" });
+	
+			// Start an interval
+			var loop = setInterval(function() {
+		
+				// Execute JavaScript to check for the existence of a name in the
+				// child browser's localStorage.
+				ref.executeScript(
+					{
+						code: "localStorage.getItem( 'compfb' )"
+					},
+					function( values ) {
+						var name = values[ 0 ];
+		
+						// If a name was set, clear the interval and close the InAppBrowser.
+						if ( name ) {
+							clearInterval( loop );
+							ref.close();
+							
+						}
+					}
+				 );
+			  },500);
+		});
+		
+		ref.removeEventListener('exit', function(){clearInterval( loop );});
+		
+		
 	}
 	function compartirTwitter(){
 		var ref=window.open('http://applicationslive.com/chch/tw/redirect.php?f='+ns.finale.split('/').pop()+'&rnd='+(+new Date()), '_blank', 'location=yes');
