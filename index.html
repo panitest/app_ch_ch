@@ -326,6 +326,7 @@ input[type=range]:focus::-ms-fill-upper {
 		pictureSource=navigator.camera.PictureSourceType;
 		destinationType=navigator.camera.DestinationType;
 		ns.so=(device.platform);
+		ns.user=device.uuid;
 		ns.bgs=[];
 		var i=1,l=61;
 		for(;i<l;i++){
@@ -454,12 +455,27 @@ input[type=range]:focus::-ms-fill-upper {
 		
 		ref.addEventListener( "loadstop", function(event) {
 			if (event.url.indexOf("post_id")!=-1 && event.url.indexOf("picture")==-1 ) {
-				var postid=getQueryVariable('post_id',event.url).split('#')[0];
-				alert(postid);
+				/*var postid=getQueryVariable('post_id',event.url).split('#')[0];*/
         		ref.close();
+				request(
+						'http://applicationslive.com/chch/proceso2.php',
+						function(r){
+							var rta=r.trim();
+							if(rta=='registrar'){
+								getPage('6.html');
+							}else{
+								getPage('7.html');
+							}
+							
+						},
+						{
+							'proceso':'facebook_ok',
+							'foto':ns.finale.split('/').pop(),
+							'user':ns.user
+						}
+				);
 				return;
     		}else if ( event.url.indexOf("picture")==-1) {
-				alert('ko');
         		ref.close();
 				return;
 			}
