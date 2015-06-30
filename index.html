@@ -327,7 +327,6 @@ input[type=range]:focus::-ms-fill-upper {
 		destinationType=navigator.camera.DestinationType;
 		ns.so=(device.platform);
 		ns.user=device.uuid;
-		alert(ns.user);
 		ns.bgs=[];
 		var i=1,l=61;
 		for(;i<l;i++){
@@ -408,6 +407,7 @@ input[type=range]:focus::-ms-fill-upper {
 					canvasData = val.data;
 				});
 			}
+			ns.nombrerandom=+(new Date())+'__'+getRandomInt(0, 9999);
 			ns.imagen= canvasData;
 			ns.finalWidth= $("canvas").width;
 			ns.finalHeight= $("canvas").height;
@@ -426,7 +426,7 @@ input[type=range]:focus::-ms-fill-upper {
 		$('fotogrande2inner').style.background='url('+imageUrl+') center center no-repeat';
 	}
 	function saveselfie(canvasData){
-		var data={'proceso':'saveselfie','src':canvasData}
+		var data={'proceso':'saveselfie','src':canvasData,'nombrerandom':ns.nombrerandom,'user':ns.user}
 		request(
 				'http://applicationslive.com/chch/proceso2.php',
 				function(r){
