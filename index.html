@@ -448,7 +448,58 @@ input[type=range]:focus::-ms-fill-upper {
 		   }
 		   return(false);
 	}
-
+	function paso8(){
+		$('loadfotoav').style.display='block';
+		$('mge').style.display='block';
+		request(
+			'http://applicationslive.com/chch/proceso2.php',
+			function(r){
+				$('contenedorselfies').innerHTML=r;
+				$('loadfotoav').style.display='none';
+				$('mge').style.display='none';
+			},
+			{
+				'proceso':'getmisselfies',
+				'user':ns.user
+			}
+		);
+		
+	}
+	function enviar(){
+		if($('nombre').value.length<1){
+			alert('Por favor complete el campo nombre');
+			return;
+		}
+		if($('email').value.length<1){
+			alert('Por favor complete el campo e-mail');
+			return;
+		}
+		if($('email').value.indexOf('@')==-1 || $('email').value.indexOf('.')==-1){
+			alert('Por favor revise el e-mail ingresado');
+			return;
+		}
+		if($('telefono').value.length<1){
+			alert('Por favor complete el campo teléfono');
+			return;
+		}
+		if(!$('acepto').checked){
+			alert('Debe aceptar los términos y condiciones');
+			return;
+		}
+		request(
+						'http://applicationslive.com/chch/proceso2.php',
+						function(r){
+							getPage('7.html');
+						},
+						{
+							'proceso':'save_data_contacto',
+							'nombre':$('nombre').value,
+							'email':$('email').value,
+							'telefono':$('telefono').value,
+							'user':ns.user
+						}
+				);
+	}
 	function compartirFacebook(){
 		var loop;
 		var ref=window.open('https://www.facebook.com/dialog/feed?app_id=1594877000767526&link='+encodeURIComponent('https://apps.facebook.com/selfiechiclets/')+'&display=popup&redirect_uri='+encodeURIComponent('https://applicationslive.com/chch/close3.php')+'&picture='+encodeURIComponent(ns.finale.split('/finales/').join('/facebook/'))+'&description='+encodeURIComponent('Divertite con tus amigos y ganá uno de los 10 selfie sticks')+'&caption='+encodeURIComponent('Selfie Chiclets'), '_blank', 'location=yes' );
