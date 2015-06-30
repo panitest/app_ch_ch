@@ -454,7 +454,7 @@ input[type=range]:focus::-ms-fill-upper {
 		
 		ref.addEventListener( "loadstop", function(event) {
 			if (event.url.indexOf("post_id")!=-1 && event.url.indexOf("picture")==-1 ) {
-				var postid=getQueryVariable('post_id',event.url);
+				var postid=getQueryVariable('post_id',event.url).split('#')[0];
 				alert(postid);
         		ref.close();
 				return;
