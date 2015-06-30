@@ -600,12 +600,14 @@ input[type=range]:focus::-ms-fill-upper {
 		var uri;
 		var my_media;
 		var l=loop?function(s){if (s === Media.MEDIA_STOPPED /*&& ns.loop*/){my_media.play();}}:null;
+		/*
 		if(ns.so=='Android'){
 			uri='/android_asset/www/'+url;
 		}else{
 			uri=url;
-		}
-		my_media = new Media(uri,
+		}*/
+		
+		my_media = new Media('http://applicationslive.com/chch/'+uri,
 				// success callback
 				 function () {/*ns.reproduciendo=1;*/ getPage('5.html',paso5);},
 				// error callback
