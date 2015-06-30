@@ -443,47 +443,20 @@ input[type=range]:focus::-ms-fill-upper {
 		
 		
 		ref.addEventListener( "loadstop", function(event) {
-			if (event.url.match("mobile/close")) {
+			
+			if (event.url.indexOf("post_id")!=-1 && event.url.indexOf("picture")==-1) {
+				alert('ok');
         		ref.close();
-				clearInterval( loop );
 				return;
-    		}
-			if (event.url.indexOf("post_id")!=-1) {
+    		}else if ( event.url.indexOf("picture")==-1) {
+				alert('ko');
         		ref.close();
-				clearInterval( loop ); alert('ok1');
 				return;
-    		}
-			if (event.url.indexOf("picture")==-1) {
-           // Clear out the name in localStorage for subsequent opens.
-		    ref.executeScript({ code: "localStorage.setItem( 'compfb', '' );" });
-	
-			// Start an interval
-			loop = setInterval(function() {
-		
-				// Execute JavaScript to check for the existence of a name in the
-				// child browser's localStorage.
-				ref.executeScript(
-					{
-						code: "localStorage.getItem( 'compfb' )"
-					},
-					function( values ) {
-						var name = values[ 0 ];
-		
-						// If a name was set, clear the interval and close the InAppBrowser.
-						if ( name ) {
-							clearInterval( loop );
-							ref.close();
-							if(name=='ok'){
-								alert('ok');
-							}
-						}
-					}
-				 );
-			  },100);
 			}
+			
+			
 		});
 		
-		ref.removeEventListener('exit', function(){clearInterval( loop );});
 		
 		
 	}
