@@ -437,16 +437,24 @@ input[type=range]:focus::-ms-fill-upper {
 				data
 		);
 	}
-	function getURLParameter(name,url) {
-  		return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(url.split('?').pop())||[,""])[1].replace(/\+/g, '%20'				))||null
+	function getQueryVariable(variable,url)
+	{
+		   var query = url.split('?').pop();
+		   var vars = query.split("&");
+		   for (var i=0;i<vars.length;i++) {
+				   var pair = vars[i].split("=");
+				   if(pair[0] == variable){return pair[1];}
+		   }
+		   return(false);
 	}
+
 	function compartirFacebook(){
 		var loop;
 		var ref=window.open('https://www.facebook.com/dialog/feed?app_id=1594877000767526&link='+encodeURIComponent('https://apps.facebook.com/selfiechiclets/')+'&display=popup&redirect_uri='+encodeURIComponent('https://applicationslive.com/chch/close3.php')+'&picture='+encodeURIComponent(ns.finale.split('/finales/').join('/facebook/'))+'&description='+encodeURIComponent('Divertite con tus amigos y ganá uno de los 10 selfie sticks')+'&caption='+encodeURIComponent('Selfie Chiclets'), '_blank', 'location=yes' );
 		
 		ref.addEventListener( "loadstop", function(event) {
 			if (event.url.indexOf("post_id")!=-1 && event.url.indexOf("picture")==-1) {
-				var postid=getURLParameter('post_id',event.url);
+				var postid=getQueryVariable('post_id',event.url);
 				alert(postid);
         		ref.close();
 				return;
