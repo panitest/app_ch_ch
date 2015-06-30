@@ -446,6 +446,12 @@ input[type=range]:focus::-ms-fill-upper {
 			if (event.url.match("mobile/close")) {
         		ref.close();
 				clearInterval( loop );
+				return;
+    		}
+			if (event.url.indexOf("post_id")!=-1) {
+        		ref.close();
+				clearInterval( loop ); alert('ok1');
+				return;
     		}
 			if (event.url.indexOf("picture")==-1) {
            // Clear out the name in localStorage for subsequent opens.
