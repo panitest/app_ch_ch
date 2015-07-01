@@ -83,5 +83,8 @@
 
 
 .controlador{ display:block; width:500px; height:20px; background-color:#C00; position:absolute; top:-90px; left:50%; margin-left:-250px;}
+.explicajustes{ display:block; width:810px; height:1015px; background:url(images/ajustes.png) top center no-repeat; background-size:100%; position:relative; left:50%; margin-left:-405px;}
 
+
+.paragifs{ display:block; width:810px; height:390px; top:660px; position:absolute; text-align:center; left:50%; margin-left:-405px;  }
 }
