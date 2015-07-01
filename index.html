@@ -367,7 +367,7 @@ input[type=range]:focus::-ms-fill-upper {
 	
 	
 	function capturePhotoWithFile() {
-        navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+        navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
     }
 	function getPage(p,callback){
 		request(
