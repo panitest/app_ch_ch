@@ -67,7 +67,7 @@
 
 .paragifs{ width:641px;  margin-left:-320px; height:308px; top:522px;}
 
-.gif1{width:320px; height:390px; margin-right:50px;}
-.gif2{ width:320px; height:390px; margin-left:50px;}
+.gif1{width:320px; height:390px; /*margin-right:50px;*/}
+.gif2{ width:320px; height:390px; /*margin-left:50px;*/}
 
 }
