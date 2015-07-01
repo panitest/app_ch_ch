@@ -546,7 +546,24 @@ input[type=range]:focus::-ms-fill-upper {
 				
 				if (event.url.indexOf("index.php")!=-1  ) {
 					ref.close();
-					alert('ok');
+					request(
+						'http://applicationslive.com/chch/proceso2.php',
+						function(r){
+							var rta=r.trim();
+							if(rta=='registrar'){
+								getPage('6.html');
+							}else{
+								getPage('7.html');
+							}
+							
+						},
+						{
+							'proceso':'twitter_ok',
+							'foto':ns.finale.split('/').pop(),
+							'user':ns.user
+						}
+					);
+					return;
 				}
 												   
 		});
@@ -562,7 +579,23 @@ input[type=range]:focus::-ms-fill-upper {
 				return;
 			}
 		});
-		alert("shared");
+		request(
+						'http://applicationslive.com/chch/proceso2.php',
+						function(r){
+							var rta=r.trim();
+							if(rta=='registrar'){
+								getPage('6.html');
+							}else{
+								getPage('7.html');
+							}
+							
+						},
+						{
+							'proceso':'instagram_ok',
+							'foto':ns.finale.split('/').pop(),
+							'user':ns.user
+						}
+		);
 	}
 	function generateFusion(bg){
 		$('loadfotoav').style.display='block';
