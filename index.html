@@ -538,6 +538,18 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	function compartirTwitter(){
 		var ref=window.open('http://applicationslive.com/chch/tw/redirect.php?f='+ns.finale.split('/').pop()+'&rnd='+(+new Date()), '_blank', 'location=yes');
+		ref.addEventListener( "loadstop", function(event) {
+				if (event.url.indexOf("error.php")!=-1  ) {
+					ref.close();
+					return;
+				}
+				
+				if (event.url.indexOf("index.php")!=-1  ) {
+					ref.close();
+					alert('ok');
+				}
+												   
+		});
 	}
 	function compartirInstagram(){
 		if(!ns.instagramInstalado){
