@@ -177,7 +177,8 @@ input[type=range]:focus::-ms-fill-upper {
     -o-transition: all 1s ease-in-out;
     -ms-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out; background:#FFF200;}
-#flechafotostodas{ position:absolute; left:auto !important; right:0; top:10%; -webkit-backface-visibility: hidden;}
+#contenedorflecha{position:relative;z-index:9000;}
+#flechafotostodas{ position:fixed; right:0; left:auto !important; top:10%; -webkit-backface-visibility: hidden;}
 </style>
     <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/shake.js"></script>
@@ -1003,7 +1004,7 @@ input[type=range]:focus::-ms-fill-upper {
     </script>
   </head>
   <body>
- 
+ <div id="contenedorflecha"> <div id="flechafotostodas" class="flechafotostodas"></div></div>
   <div id="cajaselfies" style="text-align:center; height:1900px">
  
     <img src="images/mis_selfie_chiclets.png" width="100%" style="margin-top:8%;">
@@ -1013,7 +1014,6 @@ input[type=range]:focus::-ms-fill-upper {
   <div id="contentapp">
   <div id="blocklandscape"><span>Por favor gire el dispositivo</span></div>
   	<div id="contenedorgeneral">
-    <div id="flechafotostodas" class="flechafotostodas"></div>
         <div id="cajabasedetodo">
         	<div class="logolanding"></div>
         	<div class="link1"></div>
