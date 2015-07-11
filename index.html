@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="estilo_481.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="estilo_641.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="animate-custom.css" type="text/css" charset="utf-8" />
-
     <style>
+	body{overflow-x:hidden;}
 	label{ display:block}
 	.fileContainer {
 		overflow: hidden;
@@ -993,9 +993,11 @@ input[type=range]:focus::-ms-fill-upper {
 		//$('sacudir').addEventListener("touchend", handleCajaEnd, false);
 	}
 	function ocultarSelfies(){
+		$('flechavolver').style.position='absolute';
 		$('cajaselfies').style.marginLeft='-100%';
 	}
 	function mostrarSelfies(){
+		$('flechavolver').style.position='fixed';
 		$('cajaselfies').style.marginLeft=0;
 	}
 	
@@ -1003,7 +1005,7 @@ input[type=range]:focus::-ms-fill-upper {
   </head>
   <body>
   <div id="cajaselfies" style="text-align:center; height:1900px">
-  <div class="flechavolver"  onclick="ocultarSelfies()" style="position:absolute; z-index:1000"></div>
+  <div id="flechavolver" class="flechavolver"  onclick="ocultarSelfies()" style="position:absolute; z-index:1000"></div>
     <img src="images/mis_selfie_chiclets.png" width="100%" style="margin-top:8%;">
     <div id="contenedorselfies" style="width:90%; text-align:center; left:50%; margin-left:-45%; position:relative; overflow:auto">
     </div>
