@@ -173,7 +173,7 @@ input[type=range]:focus::-ms-fill-upper {
     color: #777;
 }
 #verbtns{ display:none}
-#cajaselfies{ width:100%; position:absolute; left:0; margin-left:100%; z-index:9000;-webkit-transition: all 1s ease-in-out;
+#cajaselfies{ width:100%; position:absolute; left:-100%;  z-index:9000;-webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
     -o-transition: all 1s ease-in-out;
     -ms-transition: all 1s ease-in-out;
@@ -994,11 +994,11 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	function ocultarSelfies(){
 		$('flechavolver').style.position='absolute';
-		$('cajaselfies').style.marginLeft='100%';
+		$('cajaselfies').style.left='-100%';
 	}
 	function mostrarSelfies(){
 		$('flechavolver').style.position='fixed';
-		$('cajaselfies').style.marginLeft=0;
+		$('cajaselfies').style.left=0;
 	}
     </script>
   </head>
