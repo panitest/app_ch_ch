@@ -715,7 +715,7 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	function removeBackgroundBig(img, canvas,tolerance) {
 		var context = canvas.getContext('2d');
-		ctx = context;
+		//ctx = context;
 		context.drawImage(img, 0, 0,640,640,0,0,500,500);
 		var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 		var data = imageData.data;
