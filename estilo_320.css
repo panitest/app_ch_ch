@@ -1,5 +1,4 @@
 @media (min-width:320px) { 
-#cajaselfies{ margin-top:10px}
 #cajabasedetodo{  width:320px; height:480px;  margin-left:-160px;}
 
 .logolanding{ display:block; width:237px; height:118px; background:url(images/selfie_chiclets.png) center center no-repeat; background-size:100%; position:relative; left:50%; margin-left:-118px; margin-top:10px; }
