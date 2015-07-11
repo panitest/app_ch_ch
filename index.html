@@ -177,7 +177,8 @@ input[type=range]:focus::-ms-fill-upper {
     -o-transition: all 1s ease-in-out;
     -ms-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out; background:#FFF200;}
-#flechafotostodas{ position:fixed !important; right:0 !important; top:10%; z-index:9000;-webkit-backface-visibility: hidden;}
+#contenedorflecha{ width:100%; position:absolute; left:0; top:0;z-index:9000;}
+#flechafotostodas{ position:fixed !important; right:0 !important; top:10%; -webkit-backface-visibility: hidden;}
 </style>
     <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/shake.js"></script>
@@ -1003,9 +1004,9 @@ input[type=range]:focus::-ms-fill-upper {
     </script>
   </head>
   <body>
- 
+ <div id="contenedorflecha"> <div id="flechafotostodas" class="flechafotostodas"></div></div>
   <div id="cajaselfies" style="text-align:center; height:1900px">
-  <div id="flechafotostodas" class="flechafotostodas"></div>
+ 
     <img src="images/mis_selfie_chiclets.png" width="100%" style="margin-top:8%;">
     <div id="contenedorselfies" style="width:90%; text-align:center; left:50%; margin-left:-45%; position:relative; overflow:auto">
     </div>
