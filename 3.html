@@ -1,7 +1,7 @@
 <div id="blocklandscape"><span>Por favor gire el dispositivo</span></div>
-<img id="im" src="">
 <canvas id="tempCanvas"></canvas>
-
+<canvas id="bigCanvas" width="500" height="500"></canvas>
+<canvas id="bigTempCanvas" width="500" height="500"></canvas>
 <canvas id="sonda"></canvas>
 <div id="contenedorgeneral">
 <div id="cajabasedetodo">
@@ -15,11 +15,11 @@
 
    <div class="controlador" style="z-index:5000; background:none">
   
-   <input autocomplete="off" value="20" type="range" name="tolerance" id="tolerance" min="0" max="200" onChange="removeBackground(document.getElementById('im'), document.getElementById('canvas'),this.value);">
+   <input autocomplete="off" value="20" type="range" name="tolerance" id="tolerance" min="0" max="200" onChange="removeBackground(document.getElementById('im'), document.getElementById('canvas'),this.value);removeBackgroundBig(document.getElementById('im'),document.getElementById('bigCanvas'),this.value)">
    </div> 
     <div class="aclaracion"></div>
     </div>
-    <div class="btreload" onClick="removeBackground(document.getElementById('im'), document.getElementById('canvas'),20);document.getElementById('tolerance').value=20;"></div>
+    <div class="btreload" onClick="removeBackground(document.getElementById('im'), document.getElementById('canvas'),20);removeBackgroundBig(document.getElementById('im'),document.getElementById('bigCanvas'),20);document.getElementById('tolerance').value=20;"></div>
  </div>
  
  <div class="parabotoneschicos" style="margin-top:0px;">
