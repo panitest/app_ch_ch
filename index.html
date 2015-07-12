@@ -186,6 +186,8 @@ input[type=range]:focus::-ms-fill-upper {
 	<script type="text/javascript" src="js/comunes.js"></script>
     <script type="text/javascript" src="js/paninoAJAX.js"></script>
 	<script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/transicion.js"></script>
+
     <script type="text/javascript" charset="utf-8">
 	ns.imagen=0;
 	ns.data;
@@ -350,7 +352,6 @@ input[type=range]:focus::-ms-fill-upper {
 			}
 		});
 		 paso8();
-		alert($('cajaselfies').offsetWidth);
 		
 	}
 	
@@ -993,18 +994,20 @@ input[type=range]:focus::-ms-fill-upper {
 		//$('sacudir').addEventListener("touchmove", handleCajaMove, false);
 		//$('sacudir').addEventListener("touchend", handleCajaEnd, false);
 	}
-	function ocultarSelfies(){
-		$('flechavolver').style.position='absolute';
-		$('cajaselfies').style.left='-100%';
-	}
-	function mostrarSelfies(){
-		$('flechavolver').style.position='fixed';
-		$('cajaselfies').style.left=0;
+	function mostrarOcultarSelfies(){
+		var fin=$('cajaselfies').offsetWidth;
+		var el=panino.getO(document.body);
+		el.onMotionFinished=function(){
+			alert('fin');
+		}
+		fx(el,[
+    	{'inicio':0,'fin':fin,'u':'px','propCSS':'scrollLeft'}
+    ],1000,true,senoidal);
 	}
     </script>
   </head>
   <body>
- <div id="contenedorflecha"> <div id="flechafotostodas" class="flechafotostodas"></div></div>
+ <div id="contenedorflecha"> <div ontouchstart="mostrarOcultarSelfies();" id="flechafotostodas" class="flechafotostodas"></div></div>
 
   <div id="cajaselfies" style="text-align:center; height:1900px">
     <img src="images/mis_selfie_chiclets.png" width="100%" style="margin-top:8%;">
