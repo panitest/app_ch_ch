@@ -1028,10 +1028,11 @@ input[type=range]:focus::-ms-fill-upper {
 			ctx.drawImage(this, 0, 0);
 			window.canvas2ImagePlugin.saveImageDataToLibrary(
 				function(msg){
-					alert(msg);
+					//alert(msg);
+					getPhoto(pictureSource.PHOTOLIBRARY);
 				},
 				function(err){
-					alert(err);
+					//alert(err);
 				},
 				document.getElementById('descarga_canvas')
 			);
