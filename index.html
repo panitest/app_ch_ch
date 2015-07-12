@@ -1019,32 +1019,11 @@ input[type=range]:focus::-ms-fill-upper {
 			fx(el,[{'inicio':el.scrollLeft,'fin':0,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
 		}
 	}
-	function controlScrollEnd(e){
-		e.preventDefault();
-		e.stopPropagation();
-		var lim=$('cajaselfies').offsetWidth;
-		var el=panino.getO(document.body);
-		var sc=el.scrollLeft;
-		el.onMotionFinished=function(){
-			if(this.scrollLeft==lim){
-				$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';
-			}else{
-				$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';
-			}
-		}
-		
-		if(sc<lim/2){
-			fx(el,[{'inicio':el.scrollLeft,'fin':0,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
-		}else{
-			fx(el,[{'inicio':el.scrollLeft,'fin':lim,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
-		}
-	}
+	
 	DR(
 	   function(){
 		   window.onscroll=function(){var el=panino.getO(document.body);var sc=el.scrollLeft; if(sc>0){$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';}else{$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';}  };
-		    document.addEventListener('toucstart',function(e){e.preventDefault();e.stopPropagation();},false);
-	 	    document.addEventListener('touchmove',function(e){e.preventDefault();e.stopPropagation();},false);
-			document.addEventListener('touchend',controlScrollEnd,false);
+		   
 	   }
 	);
 	
