@@ -1020,7 +1020,17 @@ input[type=range]:focus::-ms-fill-upper {
 	   function(){window.onscroll=function(){var sc=panino.getO(document.body).scrollLeft; if(sc>0){$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';}else{$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';}};}
 	);
 	function borrar_selfie(img_filename){
-		
+		if(confirm('¿Desea eliminar esta imagen?')){
+			request(
+					'http://applicationslive.com/chch/proceso2.php',
+					function(r){
+						 paso8();
+						 alert('La imagen ha sido borrada');
+					},
+					{'proceso':'borrarselfie','foto':img_filename,'user':ns.user}
+					
+			);
+		}
 	}
 	function descargar(fullPath){
 		if(confirm('¿Desea guardar esta imagen en la galería?')){
