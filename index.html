@@ -963,9 +963,10 @@ input[type=range]:focus::-ms-fill-upper {
 	var CajaIsDown = false;
 	var AjusteY=0;
 	function handleCajaStart(e){
-		/*
+		
 		e.preventDefault();
 		e.stopPropagation();
+		/*
 		var pos=getOffset($('sacudir'));
 		CajaOffsetX=pos.left;
 		CajaOffsetY=pos.top;
@@ -1016,9 +1017,33 @@ input[type=range]:focus::-ms-fill-upper {
 			fx(el,[{'inicio':el.scrollLeft,'fin':0,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
 		}
 	}
+	function controlScrollEnd(e){
+		e.preventDefault();
+		e.stopPropagation();
+		var el=panino.getO(document.body);
+		var sc=el.scrollLeft;
+		el.onMotionFinished=function(){
+			if(this.scrollLeft==fin){
+				$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';
+			}else{
+				$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';
+			}
+		}
+		var lim=$('cajaselfies').offsetWidth;
+		if(sc<lim){
+			fx(el,[{'inicio':el.scrollLeft,'fin':0,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
+		}else{
+			fx(el,[{'inicio':el.scrollLeft,'fin':lim,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
+		}
+	}
 	DR(
-	   function(){window.onscroll=function(){var sc=panino.getO(document.body).scrollLeft; if(sc>0){$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';}else{$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';}};}
+	   function(){
+		   window.onscroll=function(){var sc=panino.getO(document.body).scrollLeft; if(sc>0){$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';}else{$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';}};
+	 	   panino.getO(document.body).addEvent('touchend',controlScrollEnd);
+	   }
 	);
+	
+	
 	function borrar_selfie(img_filename){
 		if(confirm('¿Desea eliminar esta imagen?')){
 			request(
