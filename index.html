@@ -440,12 +440,14 @@ padding-bottom:50px; overflow:hidden;
     	return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 	function selectBg(){
+		$('marcagua').style.opacity=0;
 		var selectedBg='http://applicationslive.com/chch/bg/'+ns.bgs[getRandomInt(0,30)];
 		var marca=new Image();
 		marca.onload=function(){
 			var escala=$('fotogrande2inner').offsetWidth/500;
 			$('marcagua').style.width=(this.width*escala)+'px';
 			$('marcagua').style.height=(this.height*escala)+'px';
+			$('marcagua').style.opacity=1;
 		}
 		marca.src='images/marca.png';
 		generateFusion(selectedBg);
