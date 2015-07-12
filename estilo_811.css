@@ -19,7 +19,7 @@
 .sacafoto{ background: url(images/bt_sacarfoto.png) center center; background-size:100%;}
 .elegirfoto{ background: url(images/bt_elegirfoto.png) center center; background-size:100%;}
 
-.flechafotostodas{ display:block; position:absolute; width:53px; height:176px; background:url(images/flecha.jpg) center center no-repeat; top:108px; left:0px; cursor:pointer;}
+.flechafotostodas{ display:block; position:absolute; width:53px; height:176px; background:url(images/flecha2.jpg) center center no-repeat; top:108px; left:0px; cursor:pointer;}
 
 
 .recuadrofoto{ display:block; position:relative; background:url(images/recuadro_foto_grande.png) center center no-repeat; width:610px; height:610px; background-size:100%; position:relative; left:50%; margin-left:-305px; margin-top:100px; }
@@ -67,7 +67,7 @@
 	top: 15px;
 }
 
-.flechavolver{ display:block; position:absolute; width:53px; height:176px; background:url(images/flecha.jpg) center center no-repeat; top:108px; right:0px; cursor:pointer;}
+.flechavolver{ display:block; position:absolute; width:53px; height:176px; background:url(images/flecha2.jpg) center center no-repeat; top:108px; right:0px; cursor:pointer;}
 
 
 /*18 de junio*/

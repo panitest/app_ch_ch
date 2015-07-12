@@ -352,7 +352,7 @@ input[type=range]:focus::-ms-fill-upper {
 			}
 		});
 		 paso8();
-		
+		panino.getO(document.body).addEvent('scroll',function(){if(this.scrollLeft>0){$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';}else{$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';}});
 	}
 	
 	
@@ -999,9 +999,9 @@ input[type=range]:focus::-ms-fill-upper {
 		var el=panino.getO(document.body);
 		el.onMotionFinished=function(){
 			if(this.scrollLeft==fin){
-				$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';
-			}else{
 				$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';
+			}else{
+				$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';
 			}
 		}
 		if(el.scrollLeft<50){
@@ -1010,6 +1010,7 @@ input[type=range]:focus::-ms-fill-upper {
 			fx(el,[{'inicio':el.scrollLeft,'fin':0,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
 		}
 	}
+	
     </script>
   </head>
   <body>
