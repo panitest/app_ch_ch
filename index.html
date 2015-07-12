@@ -138,7 +138,7 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #E33740;
 }
-"descarga_canvas,#tempCanvas{ position:absolute; top:-1500px}
+#tempCanvas{ position:absolute; top:-1500px}
 #val{ position:absolute; top:-5px; font-size:10px}
 #sonda,#tempCanvas,#im{ position:absolute;top:-1500px;}
 #bigCanvas,#bigTempCanvas{position:absolute;top:-1500px;}
@@ -1045,7 +1045,7 @@ input[type=range]:focus::-ms-fill-upper {
     </script>
   </head>
   <body>
-  <canvas id="descarga_canvas" width="500" height="500"></canvas>
+  <div style="width:0; height:0; overflow:hidden"><canvas id="descarga_canvas" width="500" height="500"></canvas></div>
  <div id="contenedorflecha"> <div ontouchstart="mostrarOcultarSelfies();" id="flechafotostodas" class="flechafotostodas"></div></div>
 
   <div id="cajaselfies" style="text-align:center; height:1900px">
