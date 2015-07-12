@@ -1023,23 +1023,24 @@ input[type=range]:focus::-ms-fill-upper {
 		
 	}
 	function descargar(fullPath){
-		var im=new Image();
-		im.onload=function(){
-			var ctx=document.getElementById('descarga_canvas').getContext('2d');
-			ctx.drawImage(this, 0, 0);
-			window.canvas2ImagePlugin.saveImageDataToLibrary(
-				function(msg){
-					//window.open('file:///'+msg, '_blank', 'location=yes');
-					alert('La imagen ha sido guardada en la Galería');
-				},
-				function(err){
-					//alert(err);
-				},
-				document.getElementById('descarga_canvas')
-			);
-		};
-		im.src=fullPath;
-		
+		if(confirm('¿Desea guardar esta imagen en la galería?')){
+			var im=new Image();
+			im.onload=function(){
+				var ctx=document.getElementById('descarga_canvas').getContext('2d');
+				ctx.drawImage(this, 0, 0);
+				window.canvas2ImagePlugin.saveImageDataToLibrary(
+					function(msg){
+						//window.open('file:///'+msg, '_blank', 'location=yes');
+						alert('La imagen ha sido guardada');
+					},
+					function(err){
+						//alert(err);
+					},
+					document.getElementById('descarga_canvas')
+				);
+			};
+			im.src=fullPath;
+		}
 	}
 	
     </script>
