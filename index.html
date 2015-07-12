@@ -1024,7 +1024,7 @@ input[type=range]:focus::-ms-fill-upper {
 	function descargar(fullPath){
 		var im=new Image();
 		im.onload=function(){
-			var ctc=document.getElementById('descarga_canvas').getContext('2d');
+			var ctx=document.getElementById('descarga_canvas').getContext('2d');
 			ctx.drawImage(this, 0, 0);
 			window.canvas2ImagePlugin.saveImageDataToLibrary(
 				function(msg){
