@@ -1011,7 +1011,7 @@ input[type=range]:focus::-ms-fill-upper {
 		}
 	}
 	DR(
-	   function(){window.onscroll=function(){$('log').innerHTML=panino.getO(document.body).scrollLeft};}
+	   function(){window.onscroll=function(){var sc=panino.getO(document.body).scrollLeft; if(sc>0){$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';}else{$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';}};}
 	);
     </script>
   </head>
