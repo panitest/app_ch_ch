@@ -821,6 +821,7 @@ input[type=range]:focus::-ms-fill-upper {
 	}
 	function handleTouchStart(e) {
 		panino.getO(document.body).scrollTop=0;
+		panino.getO(document.body).scrollLeft=0;
 		e.preventDefault();
 		e.stopPropagation();
 		tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
