@@ -172,11 +172,11 @@ input[type=range]:focus::-ms-fill-upper {
     color: #777;
 }
 #verbtns{ display:none}
-#cajaselfies{ width:100%; position:absolute; left:0; margin-left:100%;  z-index:9000;-webkit-transition: all 1s ease-in-out;
+#cajaselfies{ width:100%; position:absolute; left:-2000px;  z-index:9000;-webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
     -o-transition: all 1s ease-in-out;
     -ms-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out; background:#FFF200; top:0; margin-top:0; padding-top:0;
+    transition: all 1s ease-in-out; background:#FFF200; top:-3000px; margin-top:0; padding-top:0;
 	-webkit-box-shadow: -7px 0px 13px 0px rgba(0, 0, 0, 0.39);
 -moz-box-shadow:    -7px 0px 13px 0px rgba(0, 0, 0, 0.39);
 box-shadow:         -7px 0px 13px 0px rgba(0, 0, 0, 0.39);
@@ -1009,8 +1009,9 @@ padding-bottom:50px;
 	function mostrarOcultarSelfies(e){
 		e.preventDefault();
 		e.stopPropagation();
-		var fin=$('cajaselfies').offsetWidth;
-		var el=panino.getO(document.body);
+		var el=$('cajaselfies');
+		var fin=el.offsetWidth;
+		el.style.top=0;
 		el.onMotionFinished=function(){
 			if(this.scrollLeft==fin){
 				$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';
@@ -1018,19 +1019,14 @@ padding-bottom:50px;
 				$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';
 			}
 		}
-		if(el.scrollLeft<50){
-			fx(el,[{'inicio':0,'fin':fin,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
+		if(parseInt(el.style.left,10)>50){
+			fx(el,[{'inicio':fin,'fin':0,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
 		}else{
-			fx(el,[{'inicio':el.scrollLeft,'fin':0,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
+			fx(el,[{'inicio':0,'fin':fin,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
 		}
 	}
 	
-	DR(
-	   function(){
-		   window.onscroll=function(){var el=panino.getO(document.body);var sc=el.scrollLeft; if(sc>0){$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';}else{$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';}  };
-		   
-	   }
-	);
+	
 	
 	
 	function borrar_selfie(img_filename){
