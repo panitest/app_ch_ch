@@ -6,7 +6,7 @@
 <canvas id="bigTempCanvas" width="500" height="500"></canvas>
 <canvas id="sonda"></canvas>
 </div>
-<div id="en3" style="position:relative; height:100%; width:100%; overflow:hidden">
+<div id="en3" style="position:relative;">
 <div id="contenedorgeneral">
 <div id="cajabasedetodo">
 <img id="titen3" src="images/ajusta-tu-imagen.png" width="100%">
@@ -26,7 +26,7 @@
     <div class="btreload" onClick="removeBackground(document.getElementById('im'), document.getElementById('canvas'),20);removeBackgroundBig(document.getElementById('im'),document.getElementById('bigCanvas'),20);document.getElementById('tolerance').value=20;"></div>
  </div>
  
- <div class="parabotoneschicos" style="margin-top:0px;">
+ <div class="parabotoneschicos" style="margin-top:0px; width:100%; overflow:hidden">
 <div class="btbotonesmaschicos sacarotrafoto" onClick="getPage('2.html')"></div>
 <div class="btbotonesmaschicos continuar" onClick="saveCanvas();getPage('4.html',prepareShake)"></div>
 </div>
