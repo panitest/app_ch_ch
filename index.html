@@ -190,6 +190,7 @@ padding-bottom:50px; overflow:hidden;
 #contentapp{ position:relative; top:10%; width:100%; left:0; position:fixed;}
 .delete{ position:absolute; left:50%; margin-left:-40px; bottom:0;}
 .down{position:absolute; left:50%; margin-left:16px; bottom:0;}
+#marcagua{ opacity:0; bottom:0; right:0; position:absolute}
 </style>
     <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/shake.js"></script>
@@ -440,6 +441,13 @@ padding-bottom:50px; overflow:hidden;
 	}
 	function selectBg(){
 		var selectedBg='http://applicationslive.com/chch/bg/'+ns.bgs[getRandomInt(0,30)];
+		var marca=new Image();
+		marca.onload=function(){
+			var escala=$('fotogrande2inner').offsetWidth/500;
+			$('marcagua').style.width=(this.width*escala)+'px';
+			$('marcagua').style.height=(this.height*escala)+'px';
+		}
+		marca.src='images/marca.png';
 		generateFusion(selectedBg);
 		$('fotogrande2').style.background='url('+selectedBg+') center center no-repeat';
 		$('fotogrande2').style.backgroundSize='100%';
@@ -447,6 +455,7 @@ padding-bottom:50px; overflow:hidden;
 		var urlCreator = window.URL || window.webkitURL;
 		var imageUrl = urlCreator.createObjectURL( blob );
 		$('fotogrande2inner').style.background='url('+imageUrl+') center center no-repeat';
+		
 	}
 	function saveselfie(canvasData){
 		var data={'proceso':'saveselfie','src':canvasData,'nombrerandom':ns.nombrerandom,'user':ns.user}
@@ -630,22 +639,27 @@ padding-bottom:50px; overflow:hidden;
 			var recorte=new Image();
 			recorte.onload=function(){
 				tempCtx.drawImage(this, 0, 0,ns.finalWidth,ns.finalHeight,0,0,document.getElementById('tempCanvas').width,document.getElementById('tempCanvas').width);
-				//$('src').value=tempCanvas.toDataURL();
 				
-				var canvasData = tempCanvas.toDataURL();
-				if (canvasData === 'data:,' || canvasData.length < 10) {//para Android<4
-					var offsetdata=getOffset(tempCanvas);
-					var offset = {
-						left: offsetdata.left,
-						top: offsetdata.top,
-						width: tempCanvas.width,
-						height: tempCanvas.height
-					};
-					window.canvasplugin(tempCanvas, offset, 'image/png', function(val) {
-						canvasData = val.data;
-					});
+				var marca=new Image();
+				marca.onload=function(){
+					tempCtx.drawImage(this, 347,383);
+					var canvasData = tempCanvas.toDataURL();
+					if (canvasData === 'data:,' || canvasData.length < 10) {//para Android<4
+						var offsetdata=getOffset(tempCanvas);
+						var offset = {
+							left: offsetdata.left,
+							top: offsetdata.top,
+							width: tempCanvas.width,
+							height: tempCanvas.height
+						};
+						window.canvasplugin(tempCanvas, offset, 'image/png', function(val) {
+							canvasData = val.data;
+						});
+					}
+					saveselfie(canvasData);
 				}
-				saveselfie(canvasData);
+				marca.src='images/marca.png';
+				
 				
 			};
 			recorte.src=ns.imagen;
