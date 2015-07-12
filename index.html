@@ -352,7 +352,7 @@ input[type=range]:focus::-ms-fill-upper {
 			}
 		});
 		 paso8();
-		panino.getO(document.body).addEvent('scroll',function(){if(this.scrollLeft>100){$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';}else{$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';}});
+		
 	}
 	
 	
@@ -1010,10 +1010,13 @@ input[type=range]:focus::-ms-fill-upper {
 			fx(el,[{'inicio':el.scrollLeft,'fin':0,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
 		}
 	}
-	
+	DR(
+	   function(){window.onscroll=function(){$('log').innerHTML=panino.getO(document.body).scrollLeft};}
+	);
     </script>
   </head>
   <body>
+  <div id="log" style=" z-index:111111; background:#fff; position:fixed; left:0; top:0; width:200px; height:20px;"></div>
  <div id="contenedorflecha"> <div ontouchstart="mostrarOcultarSelfies();" id="flechafotostodas" class="flechafotostodas"></div></div>
 
   <div id="cajaselfies" style="text-align:center; height:1900px">
