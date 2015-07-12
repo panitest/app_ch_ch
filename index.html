@@ -186,7 +186,7 @@ padding-bottom:50px; overflow:hidden;
 
 }
 #contenedorflecha{position:relative;z-index:10000; top:0; margin-top:0; padding-top:0}
-#flechafotostodas{ position:fixed; right:0; left:auto !important; top:10%; -webkit-backface-visibility: hidden;}
+#flechafotostodas{ position:fixed; right:0; left:auto !important; top:10%; -webkit-backface-visibility: hidden; min-width:50px; background-position:right}
 #contentapp{ position:relative; top:10%; width:100%; left:0;}
 .delete{ position:absolute; left:50%; margin-left:-40px; bottom:0;}
 .down{position:absolute; left:50%; margin-left:16px; bottom:0;}
@@ -1039,10 +1039,10 @@ padding-bottom:50px; overflow:hidden;
 		
 		if(parseInt(el.offsetWidth)>50){
 			el.style.width=0;
-			$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';
+			$('flechafotostodas').style.background='url(images/flecha2.jpg) right center no-repeat';
 		}else{
 			el.style.width=fin+'px';
-			$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';
+			$('flechafotostodas').style.background='url(images/flecha.jpg) right center no-repeat';
 		}
 	}
 	
