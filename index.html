@@ -172,11 +172,8 @@ input[type=range]:focus::-ms-fill-upper {
     color: #777;
 }
 #verbtns{ display:none}
-#cajaselfies{ width:100%; position:absolute; left:-2000px;  z-index:9000;-webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
-    -ms-transition: all 1s ease-in-out;
-    transition: all 1s ease-in-out; background:#FFF200; top:-3000px; margin-top:0; padding-top:0;
+#cajaselfies{ width:100%; position:absolute; left:-2000px;  z-index:9000;
+background:#FFF200; top:-3000px; margin-top:0; padding-top:0;
 	-webkit-box-shadow: -7px 0px 13px 0px rgba(0, 0, 0, 0.39);
 -moz-box-shadow:    -7px 0px 13px 0px rgba(0, 0, 0, 0.39);
 box-shadow:         -7px 0px 13px 0px rgba(0, 0, 0, 0.39);
@@ -1013,16 +1010,18 @@ padding-bottom:50px;
 		var fin=el.offsetWidth;
 		el.style.top=0;
 		el.onMotionFinished=function(){
-			if(this.scrollLeft==fin){
+			if(this.scrollLeft>fin){
 				$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';
+				el.style.top='-3000px';
 			}else{
 				$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';
 			}
 		}
 		if(parseInt(el.style.left,10)>50){
+			el.style.left=0;
 			fx(el,[{'inicio':fin,'fin':0,'u':'px','propCSS':'left'}],500,true,senoidal);
 		}else{
-			fx(el,[{'inicio':0,'fin':fin,'u':'px','propCSS':'left'}],500,true,senoidal);
+			fx(el,[{'inicio':0,'fin':fin+100,'u':'px','propCSS':'left'}],500,true,senoidal);
 		}
 	}
 	
