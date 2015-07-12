@@ -1029,8 +1029,8 @@ input[type=range]:focus::-ms-fill-upper {
 			ctx.drawImage(this, 0, 0);
 			window.canvas2ImagePlugin.saveImageDataToLibrary(
 				function(msg){
-					//window.open('file:///path_to_image', '_system', ' ');
-					alert(msg);
+					window.open('file:///'+msg, '_blank', 'location=yes');
+					//alert(msg);
 				},
 				function(err){
 					//alert(err);
