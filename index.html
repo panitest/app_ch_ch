@@ -998,11 +998,17 @@ input[type=range]:focus::-ms-fill-upper {
 		var fin=$('cajaselfies').offsetWidth;
 		var el=panino.getO(document.body);
 		el.onMotionFinished=function(){
-			alert('fin');
+			if(this.scrollLeft==fin){
+				$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';
+			}else{
+				$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';
+			}
 		}
-		fx(el,[
-    	{'inicio':0,'fin':fin,'u':'px','propCSS':'scrollLeft'}
-    ],1000,true,senoidal);
+		if(el.scrollLeft<50){
+			fx(el,[{'inicio':0,'fin':fin,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
+		}else{
+			fx(el,[{'inicio':el.scrollLeft,'fin':0,'u':'px','propCSS':'scrollLeft'}],500,true,senoidal);
+		}
 	}
     </script>
   </head>
