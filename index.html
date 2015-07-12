@@ -172,12 +172,12 @@ input[type=range]:focus::-ms-fill-upper {
     color: #777;
 }
 #verbtns{ display:none}
-#cajaselfies{ width:100%; position:absolute; left:-2000px;  z-index:9000;
-background:#FFF200; top:-3000px; margin-top:0; padding-top:0;
+#cajaselfies{ width:0; position:absolute; right:0;  z-index:9000;
+background:#FFF200; top:-3000px; margin-top:0; padding-top:0; top:0;
 	-webkit-box-shadow: -7px 0px 13px 0px rgba(0, 0, 0, 0.39);
 -moz-box-shadow:    -7px 0px 13px 0px rgba(0, 0, 0, 0.39);
 box-shadow:         -7px 0px 13px 0px rgba(0, 0, 0, 0.39);
-padding-bottom:50px;
+padding-bottom:50px; overflow:hidden;
 }
 #contenedorflecha{position:relative;z-index:10000; top:0; margin-top:0; padding-top:0}
 #flechafotostodas{ position:fixed; left:0; left:auto !important; top:10%; -webkit-backface-visibility: hidden;}
@@ -1007,21 +1007,18 @@ padding-bottom:50px;
 		e.preventDefault();
 		e.stopPropagation();
 		var el=$('cajaselfies');
-		var fin=el.offsetWidth;
-		el.style.top=0;
+		var fin=$('contentapp').offsetWidth;
 		el.onMotionFinished=function(){
-			if(this.scrollLeft>fin){
-				$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';
-				el.style.top='-3000px';
-			}else{
+			if(this.offsetWidth<fin){
 				$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';
+			}else{
+				$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';
 			}
 		}
-		if(parseInt(el.style.left,10)>50){
-			el.style.left=0;
-			fx(el,[{'inicio':fin,'fin':0,'u':'px','propCSS':'left'}],500,true,senoidal);
+		if(parseInt(el.offsetWidth)>50){
+			fx(el,[{'inicio':fin,'fin':0,'u':'px','propCSS':'width'}],500,true,senoidal);
 		}else{
-			fx(el,[{'inicio':0,'fin':fin+100,'u':'px','propCSS':'left'}],500,true,senoidal);
+			fx(el,[{'inicio':0,'fin':fin,'u':'px','propCSS':'width'}],500,true,senoidal);
 		}
 	}
 	
