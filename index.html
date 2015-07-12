@@ -1042,7 +1042,9 @@ input[type=range]:focus::-ms-fill-upper {
 	DR(
 	   function(){
 		   window.onscroll=function(){var el=panino.getO(document.body);var sc=el.scrollLeft; if(sc>0){$('flechafotostodas').style.background='url(images/flecha.jpg) center center no-repeat';}else{$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';}  };
-	 	   document.addEventListener('touchend',controlScrollEnd,dalse);
+		    document.addEventListener('toucstart',function(e){e.preventDefault();e.stopPropagation();},false);
+	 	    document.addEventListener('touchmove',function(e){e.preventDefault();e.stopPropagation();},false);
+			document.addEventListener('touchend',controlScrollEnd,false);
 	   }
 	);
 	
