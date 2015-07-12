@@ -6,27 +6,27 @@
 <canvas id="bigTempCanvas" width="500" height="500"></canvas>
 <canvas id="sonda"></canvas>
 </div>
-<div id="en3" style="position:relative;border:1px solid red">
+<div id="en3" style="position:relative">
 <div id="contenedorgeneral">
 <div id="cajabasedetodo">
-<img id="titen3" src="images/ajusta-tu-imagen.png" width="100%">
+<img id="titen3" src="images/ajusta-tu-imagen.png" width="100%" style="border:1px solid red">
   <div class="recuadrofoto3">
   
   
   
     <div id="fotogrande2" class="fotogrande2" style="background:#FFF200;">
-    <canvas id="canvas" style=" cursor:crosshair;border:1px solid red"></canvas>
+    <canvas id="canvas" style=" cursor:crosshair"></canvas>
 
-   <div class="controlador" style="z-index:5000; background:none;;border:1px solid red">
+   <div class="controlador" style="z-index:5000; background:none;">
   
    <input autocomplete="off" value="20" type="range" name="tolerance" id="tolerance" min="0" max="200" onChange="removeBackground(document.getElementById('im'), document.getElementById('canvas'),this.value);removeBackgroundBig(document.getElementById('im'),document.getElementById('bigCanvas'),this.value)">
    </div> 
-    <div class="aclaracion" style="border:1px solid red"></div>
+    <div class="aclaracion"></div>
     </div>
     <div class="btreload" onClick="removeBackground(document.getElementById('im'), document.getElementById('canvas'),20);removeBackgroundBig(document.getElementById('im'),document.getElementById('bigCanvas'),20);document.getElementById('tolerance').value=20;"></div>
  </div>
  
- <div class="parabotoneschicos" style="margin-top:0px; width:100%; overflow:hidden;;border:1px solid red">
+ <div class="parabotoneschicos" style="margin-top:0px; width:100%; overflow:hidden;">
 <div class="btbotonesmaschicos sacarotrafoto" onClick="getPage('2.html')"></div>
 <div class="btbotonesmaschicos continuar" onClick="saveCanvas();getPage('4.html',prepareShake)"></div>
 </div>
