@@ -358,6 +358,12 @@ input[type=range]:focus::-ms-fill-upper {
 		
 	}
 	
+	function getPhotoNada(source) 
+	{
+		navigator.camera.getPicture(function(){}, function(){}, { quality: 50, 
+		destinationType: destinationType.FILE_URI,
+		sourceType: source });
+	}
 	
 	function getPhoto(source) 
 	{
@@ -1029,7 +1035,7 @@ input[type=range]:focus::-ms-fill-upper {
 			window.canvas2ImagePlugin.saveImageDataToLibrary(
 				function(msg){
 					//alert(msg);
-					if(confirm('La imagen ha sido guardada en la galería.\n¿Desea abrir la galería?')){getPhoto(pictureSource.PHOTOLIBRARY);}
+					if(confirm('La imagen ha sido guardada en la galería.\n¿Desea abrir la galería?')){getPhotoNada(pictureSource.PHOTOLIBRARY);}
 				},
 				function(err){
 					//alert(err);
