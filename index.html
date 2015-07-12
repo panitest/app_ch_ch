@@ -1008,6 +1008,7 @@ padding-bottom:50px; overflow:hidden;
 		e.stopPropagation();
 		var el=$('cajaselfies');
 		var fin=$('contentapp').offsetWidth;
+		$('innercajaselfies').style.width=fin+'px';
 		el.onMotionFinished=function(){
 			if(this.offsetWidth<fin){
 				$('flechafotostodas').style.background='url(images/flecha2.jpg) center center no-repeat';
@@ -1016,9 +1017,9 @@ padding-bottom:50px; overflow:hidden;
 			}
 		}
 		if(parseInt(el.offsetWidth)>50){
-			fx(el,[{'inicio':fin,'fin':0,'u':'px','propCSS':'width'}],300,true,senoidal);
+			fx(el,[{'inicio':fin,'fin':0,'u':'px','propCSS':'width'}],500,true,senoidal);
 		}else{
-			fx(el,[{'inicio':0,'fin':fin,'u':'px','propCSS':'width'}],300,true,senoidal);
+			fx(el,[{'inicio':0,'fin':fin,'u':'px','propCSS':'width'}],500,true,senoidal);
 		}
 	}
 	
@@ -1066,10 +1067,11 @@ padding-bottom:50px; overflow:hidden;
  <div id="contenedorflecha"> <div ontouchstart="mostrarOcultarSelfies(event);" id="flechafotostodas" class="flechafotostodas"></div></div>
 
   <div id="cajaselfies" style="text-align:center; height:1900px">
+    <div id="innercajaselfies" style="text-align:center; height:1900px">
     <img src="images/mis_selfie_chiclets.png" width="100%" style="margin-top:8%;">
     <div id="contenedorselfies" style="width:90%; text-align:center; left:50%; margin-left:-45%; position:relative; overflow:auto">
     </div>
-  </div>
+  </div></div>
   <div id="contentapp">
   <div id="blocklandscape"><span>Por favor gire el dispositivo</span></div>
   	<div id="contenedorgeneral">
