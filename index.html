@@ -1029,8 +1029,8 @@ input[type=range]:focus::-ms-fill-upper {
 			ctx.drawImage(this, 0, 0);
 			window.canvas2ImagePlugin.saveImageDataToLibrary(
 				function(msg){
-					window.open('file:///'+msg, '_blank', 'location=yes');
-					//alert(msg);
+					//window.open('file:///'+msg, '_blank', 'location=yes');
+					alert('La imagen ha sido guardada en la Galería');
 				},
 				function(err){
 					//alert(err);
