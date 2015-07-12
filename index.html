@@ -1029,7 +1029,7 @@ input[type=range]:focus::-ms-fill-upper {
 			window.canvas2ImagePlugin.saveImageDataToLibrary(
 				function(msg){
 					//alert(msg);
-					getPhoto(pictureSource.PHOTOLIBRARY);
+					if(confirm('La imagen ha sido guardada en la galería.\n¿Desea abrir la galería?')){getPhoto(pictureSource.PHOTOLIBRARY);}
 				},
 				function(err){
 					//alert(err);
