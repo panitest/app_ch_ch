@@ -62,10 +62,24 @@
 .btreload{  width:118px; height:32px; bottom:9px; right:20px;}
 
 .controlador{  width:198px; height:15px;  top:-55px; margin-left:-99px;}
-.explicajustes{  width:320px; height:400px; margin-left:-160px; margin-top:0px;}
+.explicajustes{  width:320px; height:210px; margin-left:-160px; margin-top:0px;}
 
-.paragifs{ width:320px;  margin-left:-160px; height:154px; top:260px;}
+.paragifs{ width:320px;  margin-left:-160px; /*height:154px; /*top:210px;*/}
 
-.gif1{width:126px; height:154px; margin-right:20px;}
-.gif2{ width:126px; height:154px;  margin-left:20px;}
+
+
+#cajaexplicacion{  width:320px; /*height:480px;*/  margin-left:-160px;}
+
+.botoncontexplicacion{ width:320px; height:79px; margin-left:-160px;}
+
+.pgif1{width:320px; height:460px; margin-top:30px; float:none;}
+.pgif2{width:320px; height:460px; float:none;}
+
+.titgif1{ width:320px; height:60px; background-size:60%;}
+.titgif2{ width:320px; height:60px; background-size:60%;}
+
+.gif1{width:320px; height:390px; background-size:90%;}
+.gif2{ width:320px; height:390px; background-size:90%;}
+
+
 }
