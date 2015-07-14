@@ -17,11 +17,11 @@
     <div id="fotogrande2" class="fotogrande2" style="background:#FFF200;">
     <canvas id="canvas" style=" cursor:crosshair"></canvas>
 
-   <div class="controlador" style="z-index:9000; background:none;">
+   <div class="controlador" style="z-index:5000; background:none;">
   
    <input autocomplete="off" value="20" type="range" name="tolerance" id="tolerance" min="0" max="200" onChange="removeBackground(document.getElementById('im'), document.getElementById('canvas'),this.value);removeBackgroundBig(document.getElementById('im'),document.getElementById('bigCanvas'),this.value)">
    </div> 
-    <div style="display:none" class="aclaracion"></div>
+    <div class="aclaracion"></div>
     </div>
     <div class="btreload" onClick="removeBackground(document.getElementById('im'), document.getElementById('canvas'),20);removeBackgroundBig(document.getElementById('im'),document.getElementById('bigCanvas'),20);document.getElementById('tolerance').value=20;"></div>
  </div>
