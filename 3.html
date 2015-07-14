@@ -22,7 +22,7 @@
         ondragover="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();"  
         ondrop="event.dataTransfer.dropEffect='none';event.stopPropagation(); event.preventDefault();" class="controlador" style="z-index:5000; background:none;">
   
-   <input autocomplete="off" value="20" type="range" name="tolerance" id="tolerance" min="0" max="200" onChange="removeBackground(document.getElementById('im'), document.getElementById('canvas'),this.value);removeBackgroundBig(document.getElementById('im'),document.getElementById('bigCanvas'),this.value)">
+   <input autocomplete="off" value="20" type="range" name="tolerance" id="tolerance" min="0" max="200" ontouchend="removeBackground(document.getElementById('im'), document.getElementById('canvas'),this.value);removeBackgroundBig(document.getElementById('im'),document.getElementById('bigCanvas'),this.value)">
    </div> 
     <div class="aclaracion"></div>
     </div>
