@@ -1085,6 +1085,13 @@ padding-bottom:50px; overflow:hidden;
 		}
 	}
 	DR(function(){$('zactflecha').style.width='50px';$('zactflecha').style.height=$('flechafotostodas').offsetHeight+'px';});
+	ns.tol=0;
+	function handleonchange(){
+		if(ns.tol){
+			clearTimeout(ns.tol);
+		}
+	ns.tol=setTimeout(function(){removeBackground(document.getElementById('im'), document.getElementById('canvas'),$('tolerance').value);removeBackgroundBig(document.getElementById('im'),document.getElementById('bigCanvas'),$('tolerance').value);},200);
+	}
     </script>
   </head>
   <body>
