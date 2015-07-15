@@ -252,7 +252,7 @@ padding-bottom:50px; overflow:hidden;
 				});
 			}
 			ns.imagen= canvasData;
-			alert(canvasData.substr(0,30));
+			//alert(canvasData.substr(0,30));
 			/*
 			if(typeof callback=='function'){
 				callback();
@@ -957,8 +957,8 @@ padding-bottom:50px; overflow:hidden;
 		var blob = dataURItoBlob(ns.imagen);
 		var urlCreator = window.URL || window.webkitURL;
 		var imageUrl = urlCreator.createObjectURL( blob );
-		$('im').src=imageUrl;
-		/*$('im').src=ns.imagen;*/
+		//$('im').src=imageUrl;
+		$('im').src=ns.imagen;
 		
 	}
 	ns.paso=1;
