@@ -97,7 +97,7 @@
     <string>100</string>
     </gap:config-file>
 	<gap:config-file platform="android" parent="/manifest">
-	<application android:hardwareAccelerated="false"/>
+	<application android:hardwareAccelerated="false" />
 	</gap:config-file>
     <!--
         Define access to external domains.
