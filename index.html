@@ -458,10 +458,10 @@ padding-bottom:50px; overflow:hidden;
 		generateFusion(selectedBg);
 		$('fotogrande2').style.background='url('+selectedBg+') center center no-repeat';
 		$('fotogrande2').style.backgroundSize='100%';
-		var blob = dataURItoBlob(ns.imagen);
+		/*var blob = dataURItoBlob(ns.imagen);
 		var urlCreator = window.URL || window.webkitURL;
-		var imageUrl = urlCreator.createObjectURL( blob );
-		$('fotogrande2inner').style.background='url('+imageUrl+') center center no-repeat';
+		var imageUrl = urlCreator.createObjectURL( blob );*/
+		$('fotogrande2inner').style.background='url('+ns.imagen+') center center no-repeat';
 		
 	}
 	function saveselfie(canvasData){
