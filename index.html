@@ -286,10 +286,10 @@ padding-bottom:50px; overflow:hidden;
 	function win(r){
 		$('loadfotoav').style.display='none';
 		$('mge').style.display='none';
-		if(r.response.indexOf('data:image')==-1){
+		/*if(r.response.indexOf('data:image')==-1){
 			alert(r.response);
 			return;
-		}
+		}*/
 		/*alert(r.response.substr(0,30));
 		return;*/
 		cropJS(r.response,640,640,ns.callback);
