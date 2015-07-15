@@ -290,6 +290,8 @@ padding-bottom:50px; overflow:hidden;
 			alert(r.response);
 			return;
 		}
+		alert(r.response.substr(0,30));
+		return;
 		cropJS(r.response,640,640,ns.callback);
 	}
 	function fail(r){
