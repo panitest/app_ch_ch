@@ -443,6 +443,9 @@ padding-bottom:50px; overflow:hidden;
 						function(){if($('sacudir')){$('sacudir').style.background='url(images/chickets_sacudir_conchicle.jpg) center center no-repeat';$('sacudir').style.backgroundSize='100%';}},1500		
 					);
 				 }
+				 if(ns.paso!=4 && $('sacudir')){
+					   $('sacudir').style.left=$('sacudir').style.top='-1500px';
+				  }
 				if(typeof callback=='function'){
 					callback();
 				}
@@ -1066,6 +1069,7 @@ padding-bottom:50px; overflow:hidden;
 	function prepareShake(){
 		shake.startWatch(chch);
 		$('sacudir').addEventListener("touchstart", handleCajaStart, false);
+		setTimeout(chch,4000);
 		//$('sacudir').addEventListener("touchmove", handleCajaMove, false);
 		//$('sacudir').addEventListener("touchend", handleCajaEnd, false);
 	}
