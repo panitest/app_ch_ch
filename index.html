@@ -210,6 +210,8 @@ padding-bottom:50px; overflow:hidden;
 			while (offsetTrail && offsetTrail.nodeName!=document.documentElement) {
 				offsetTrail = offsetTrail.offsetParent;
 				offsetTrail.style.overflow='visible';
+				offsetTrail.style.opacity='0.0';
+				setTimeout(function(){offsetTrail.style.opacity='1';},15);
 			}
 		}
 	}
@@ -430,13 +432,15 @@ padding-bottom:50px; overflow:hidden;
 				}
 				$('contentapp').innerHTML=r;
 				 fixCanvasAndroid4();
-				 if(ns.paso==4){
-					 $('sacudir').style.top=(-HEIGHT/10)+'px';
-					 $('sacudir').style.height=HEIGHT+'px';
-					 $('sacudir').style.width=WIDTH+'px';
+				  if(ns.paso==4 && $('sacudir')){
+					 //$('sacudir').style.top=(-HEIGHT/10)+'px';
+					 //$('sacudir').style.height=HEIGHT+'px';
+					// $('sacudir').style.width=WIDTH+'px';
+					 $('sacudir').style.left=$('sacudir').style.top=0;
 					 $('sacudir').style.background='url(images/chickets_sacudir_conshake.jpg) center center no-repeat';
+					 $('sacudir').style.backgroundSize='100%';
 					 setTimeout(
-						function(){$('sacudir').style.background='url(images/chickets_sacudir_conchicle.jpg) center center no-repeat';},1500		
+						function(){if($('sacudir')){$('sacudir').style.background='url(images/chickets_sacudir_conchicle.jpg) center center no-repeat';$('sacudir').style.backgroundSize='100%';}},1500		
 					);
 				 }
 				if(typeof callback=='function'){
@@ -487,7 +491,7 @@ padding-bottom:50px; overflow:hidden;
 		var urlCreator = window.URL || window.webkitURL;
 		var imageUrl = urlCreator.createObjectURL( blob );*/
 		$('fotogrande2inner').style.background='url('+ns.imagen+') center center no-repeat';
-		
+		$('fotogrande2inner').style.backgroundSize='100%';
 	}
 	function saveselfie(canvasData){
 		var data={'proceso':'saveselfie','src':canvasData,'nombrerandom':ns.nombrerandom,'user':ns.user}
@@ -727,7 +731,8 @@ padding-bottom:50px; overflow:hidden;
 	}
 	function chch(){
 		if(ns.paso!=4){return;}
-		$('sacudir').className='animated shake';
+		if($('sacudir'))
+			$('sacudir').className='animated shake';
 		
 		//if(!ns.reproduciendo){
 		playAudio('sound/chch.mp3');
@@ -1127,6 +1132,7 @@ padding-bottom:50px; overflow:hidden;
     </script>
   </head>
   <body>
+   <div id="sacudir"></div>
   <div style="width:0; height:0; overflow:hidden; position:absolute; top:-1500px; z-index:1"><canvas id="descarga_canvas" width="500" height="500"></canvas></div>
  <div id="contenedorflecha"> 
  <div  id="flechafotostodas" class="flechafotostodas"></div>
