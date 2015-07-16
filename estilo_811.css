@@ -32,9 +32,9 @@
 .descubrirfoto{background: url(images/bt_descubrirfondo.png) center center; background-size:100%;}
 
 .sacarotrafoto{background:url(images/bt_sacarotrafoto.png) center center; background-size:100%;}
-
+/*
 #sacudir{ display:block; width:810px; height:1215px; position:relative; left:50%; margin-left:-405px; overflow:hidden; background:url(images/chickets_sacudir_conshake.jpg) center center no-repeat; background-size:100%; cursor:pointer;}
-
+*/
 .backgroundfoto{display:block;  width:500px; height:500px; background-size:100%; position:relative; left:50%; margin-left:-250px; top:55px;}
 
 .fotorecortada{display:block; width:500px; height:500px; background-size:100%; position:absolute; top:0px; left:0px;}
