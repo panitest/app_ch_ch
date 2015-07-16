@@ -356,7 +356,22 @@ padding-bottom:50px; overflow:hidden;
 	*/
 	var pictureSource;   
     var destinationType; 
-	
+	function getWindowSizes() {
+	  var windowHeight = 0, windowWidth = 0;
+	  if (typeof (window.innerWidth) == 'number') {
+		  windowHeight = window.innerHeight;
+		  windowWidth = window.innerWidth;
+		  
+	  } else if (document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+		  windowHeight = document.documentElement.clientHeight;
+		  windowWidth = document.documentElement.clientWidth;
+		  
+	  } else if (document.body && (document.body.clientWidth || document.body.clientHeight)) {
+		 windowHeight = document.body.clientHeight;
+		 windowWidth = document.body.clientWidth;
+	  }
+	  return [windowWidth, windowHeight];
+	}
 	document.addEventListener("deviceready",onDeviceReady,false);
 	
 	function onDeviceReady() 
@@ -379,7 +394,7 @@ padding-bottom:50px; overflow:hidden;
 			}
 		});
 		 paso8();
-		
+		var HEIGHT=getWindowSizes()[1];
 	}
 	
 	
@@ -426,7 +441,7 @@ padding-bottom:50px; overflow:hidden;
 				$('contentapp').innerHTML=r;
 				 fixCanvasAndroid4();
 				 if(ns.paso==4){
-					  $('sacudir').style.height=document.documentelement.clientheight+'px';
+					  $('sacudir').style.height=HEIGHT+'px';
 					 $('sacudir').style.background='url(images/chickets_sacudir_conshake.jpg) center center no-repeat';
 					 setTimeout(
 						function(){$('sacudir').style.background='url(images/chickets_sacudir_conchicle.jpg) center center no-repeat';},1500		
