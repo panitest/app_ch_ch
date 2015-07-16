@@ -921,6 +921,8 @@ padding-bottom:50px; overflow:hidden;
 			var im=new Image();
 			//im.crossOrigin = "Anonymous";
 			im.onload=function(){
+					panino.getO(document.body).scrollTop=0;
+					panino.getO(document.body).scrollLeft=0;
 				var pos=getOffset($('canvas'));
 				offsetX=pos.left;
 				offsetY=pos.top;
