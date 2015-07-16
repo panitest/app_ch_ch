@@ -373,7 +373,7 @@ padding-bottom:50px; overflow:hidden;
 	  return [windowWidth, windowHeight];
 	}
 	document.addEventListener("deviceready",onDeviceReady,false);
-	
+	var HEIGHT;
 	function onDeviceReady() 
 	{
 		pictureSource=navigator.camera.PictureSourceType;
@@ -394,7 +394,7 @@ padding-bottom:50px; overflow:hidden;
 			}
 		});
 		 paso8();
-		var HEIGHT=getWindowSizes()[1];
+		HEIGHT=getWindowSizes()[1];
 	}
 	
 	
