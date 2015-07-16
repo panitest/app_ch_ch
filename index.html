@@ -374,6 +374,7 @@ padding-bottom:50px; overflow:hidden;
 	}
 	document.addEventListener("deviceready",onDeviceReady,false);
 	var HEIGHT;
+	var WIDTH;
 	function onDeviceReady() 
 	{
 		pictureSource=navigator.camera.PictureSourceType;
@@ -394,7 +395,9 @@ padding-bottom:50px; overflow:hidden;
 			}
 		});
 		 paso8();
-		HEIGHT=getWindowSizes()[1];
+		 var sizes=getWindowSizes();
+		HEIGHT=sizes[1];
+		WIDTH==sizes[0];
 	}
 	
 	
@@ -441,7 +444,8 @@ padding-bottom:50px; overflow:hidden;
 				$('contentapp').innerHTML=r;
 				 fixCanvasAndroid4();
 				 if(ns.paso==4){
-					 // $('sacudir').style.height=HEIGHT+'px';
+					 $('sacudir').style.height=HEIGHT+'px';
+					 $('sacudir').style.width=WIDTH+'px';
 					 $('sacudir').style.background='url(images/chickets_sacudir_conshake.jpg) center center no-repeat';
 					 setTimeout(
 						function(){$('sacudir').style.background='url(images/chickets_sacudir_conchicle.jpg) center center no-repeat';},1500		
