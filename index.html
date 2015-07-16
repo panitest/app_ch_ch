@@ -816,8 +816,8 @@ padding-bottom:50px; overflow:hidden;
 		e.preventDefault();
 		e.stopPropagation();
 		var touch = e.targetTouches[0];
-		mouseX = (touch.screenX-offsetX) || 0;
-		mouseY = (touch.screenY-offsetY) || 0;
+		mouseX = (touch.pageX-offsetX) || 0;
+		mouseY = (touch.pageY-offsetY) || 0;
 		if(mouseX<0 || mouseX>document.getElementById('tempCanvas').width){
 			return;
 		}
@@ -923,7 +923,8 @@ padding-bottom:50px; overflow:hidden;
 			im.onload=function(){
 					panino.getO(document.body).scrollTop=0;
 					panino.getO(document.body).scrollLeft=0;
-				var pos=getOffset($('canvas'));
+				//var pos=getOffset($('canvas'));
+				var pos=getElementPosition.call($('canvas'));
 				offsetX=pos.left;
 				offsetY=pos.top;
 				 removeBackground(this, document.getElementById('canvas'),20);
