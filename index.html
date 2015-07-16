@@ -853,6 +853,10 @@ padding-bottom:50px; overflow:hidden;
 	function handleTouchStart(e) {
 		panino.getO(document.body).scrollTop=0;
 		panino.getO(document.body).scrollLeft=0;
+		//var pos=getOffset($('canvas'));
+		var pos=$('canvas').getBoundingClientRect();
+		offsetX=pos.left;
+		offsetY=pos.top;
 		e.preventDefault();
 		e.stopPropagation();
 		tempCtx.clearRect(0, 0, tempCanvas.width, tempCanvas.height);
@@ -921,12 +925,7 @@ padding-bottom:50px; overflow:hidden;
 			var im=new Image();
 			//im.crossOrigin = "Anonymous";
 			im.onload=function(){
-					panino.getO(document.body).scrollTop=0;
-					panino.getO(document.body).scrollLeft=0;
-				//var pos=getOffset($('canvas'));
-				var pos=$('canvas').getBoundingClientRect();
-				offsetX=pos.left;
-				offsetY=pos.top;
+					
 				 removeBackground(this, document.getElementById('canvas'),20);
 				 removeBackgroundBig(this, document.getElementById('bigCanvas'),20);
 				 tempCtx.drawImage(this, 0, 0,640,640,0,0,document.getElementById('tempCanvas').width,document.getElementById('tempCanvas').width);
