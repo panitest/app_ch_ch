@@ -949,16 +949,16 @@ padding-bottom:50px; overflow:hidden;
 			tempCanvas=document.getElementById('tempCanvas');
 			tempCtx = tempCanvas.getContext("2d");
 		
-			var im=new Image();
+			//var im=new Image();
 			//im.crossOrigin = "Anonymous";
-			im.onload=function(){
+			//im.onload=function(){
 					
 				 removeBackground(this, document.getElementById('canvas'),20);
 				 removeBackgroundBig(this, document.getElementById('bigCanvas'),20);
 				 tempCtx.drawImage(this, 0, 0,640,640,0,0,document.getElementById('tempCanvas').width,document.getElementById('tempCanvas').width);
 				 ctxBigTempCanvas.drawImage(this, 0, 0,640,640,0,0,500,500);		 
-			}
-			im.src=$('im').src;
+			//}
+			//im.src=$('im').src;
 			$("canvas").onmousedown=function (e) {
 				handleMouseDown(e);
 			};
