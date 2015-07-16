@@ -704,7 +704,7 @@ padding-bottom:50px; overflow:hidden;
 		}
 		my_media = new Media(uri,
 				// success callback
-				 function () {/*ns.reproduciendo=1;*/ getPage('5.html',paso5);},
+				 function () {/*ns.reproduciendo=1;*/ getPage('5.html',paso5);my_media.release();},
 				// error callback
 				 function (err) { /*alert("playAudio():Audio Error: " + err.code);*/ },l
 		);
