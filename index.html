@@ -202,6 +202,17 @@ padding-bottom:50px; overflow:hidden;
     <script type="text/javascript" src="js/transicion.js"></script>
 
     <script type="text/javascript" charset="utf-8">
+	function fixCanvasAndroid4() {
+		var els=document.getElementsByName('canvas'),i=0,l=els.length,offsetTrail;
+		for(;i<l;i++){
+			offsetTrail = els[i];
+			while (offsetTrail && offsetTrail.nodeName!=document.documentElement) {
+				offsetTrail = offsetTrail.offsetParent;
+				offsetTrail.style.overflow='visible';
+			}
+		}
+	}
+
 	ns.imagen=0;
 	ns.data;
 	function dataURItoBlob(dataURI) {
@@ -413,6 +424,7 @@ padding-bottom:50px; overflow:hidden;
 					break;
 				}
 				$('contentapp').innerHTML=r;
+				 fixCanvasAndroid4();
 				if(typeof callback=='function'){
 					callback();
 				}
