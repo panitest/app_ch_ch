@@ -924,7 +924,7 @@ padding-bottom:50px; overflow:hidden;
 					panino.getO(document.body).scrollTop=0;
 					panino.getO(document.body).scrollLeft=0;
 				//var pos=getOffset($('canvas'));
-				var pos=getElementPosition.call($('canvas'));
+				var pos=$('canvas').getBoundingClientRect();
 				offsetX=pos.left;
 				offsetY=pos.top;
 				 removeBackground(this, document.getElementById('canvas'),20);
