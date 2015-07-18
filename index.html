@@ -203,6 +203,16 @@ padding-bottom:50px; overflow:hidden;
     <script type="text/javascript" src="js/transicion.js"></script>
 
     <script type="text/javascript" charset="utf-8">
+	function testConexion(){
+		var im=new Image();
+		im.onload=function(){};
+		im.onerror=function(){
+			$('offline').style.left=$('offline').style.top=0;
+			$('offline').style.backgroundSize='100%';
+			$('contentapp').innerHTML='';
+		};
+		im.src='http://applicationslive.com/chch/images/ajax-loader.gif?'+(+new Date());
+	}
 	function fixCanvasAndroid4() {
 		var els=document.getElementsByName('canvas'),i=0,l=els.length,offsetTrail;
 		for(;i<l;i++){
@@ -387,6 +397,7 @@ padding-bottom:50px; overflow:hidden;
 
 		HEIGHT=window.innerHeight;
 		WIDTH=window.innerWidth;
+		testConexion();
 	}
 	
 	
@@ -452,6 +463,7 @@ padding-bottom:50px; overflow:hidden;
 			},
 			{}
 		);
+		testConexion();
 	}
 	function saveCanvas(){
 		var canvasData = $("bigCanvas").toDataURL();
@@ -1136,6 +1148,7 @@ padding-bottom:50px; overflow:hidden;
     </script>
   </head>
   <body>
+  <div id="offline" style="background:url(images/icon.png) center center no-repeat #FFF200; width:100%; height:100%; position:absolute; left:-2000px;; top:-2000px; z-index:90000"></div>
    <div id="sacudir"></div>
   <div style="width:0; height:0; overflow:hidden; position:absolute; top:-1500px; z-index:1"><canvas id="descarga_canvas" width="500" height="500"></canvas></div>
  <div id="contenedorflecha"> 
