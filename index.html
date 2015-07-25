@@ -778,20 +778,47 @@ padding-bottom:50px; overflow:hidden;
 		}
 		ctxBigTempCanvas.putImageData(imageData, 0, 0);
 	}
-	
+	function testColores(ctx,w){
+		var opts={ skip: 5, exclude: '0,0,0'};
+		var image_data   = ctx.getImageData(0, 0, w, 2),
+         pixel_length = image_data.data.length,
+          data         = image_data.data;
+		   var colors = {}, 
+          primary_color = { 
+            rgb: '',
+            count: 0
+          };
+		  
+		  for ( var px = 0; px < pixel_length; px = px + opts.skip * 4 ) {
+        		var rgb =data[px]+','+data[px+1]+','+data[px+2];
+				
+				if(rgb!=opts.exclude){
+					 if ( rgb in colors ) {
+							colors[rgb]++;
+					  } else {
+							colors[rgb] = 1;
+					  }
+				
+					var count = colors[rgb];
+					if ( count > primary_color.count ) {
+					  primary_color.rgb = rgb;
+					  primary_color.count = count;
+					}
+				}
+		  }
+		  return  primary_color.rgb.split(',');
+		
+	}
 	function removeBackground(img, canvas,tolerance) {
 		var context = canvas.getContext('2d');
 		ctx = context;
 		context.drawImage(img, 0, 0,640,640,0,0,document.getElementById('tempCanvas').width,document.getElementById('tempCanvas').width);
+		ns.testColor=testColores(context,document.getElementById('tempCanvas').width);
 		var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 		var data = imageData.data;
-		var start = {
-			red: data[0],
-			green: data[1],
-			blue: data[2]
-		};
+		
 		for (var i = 0, n = data.length; i < n; i += 4) {
-			var diff = Math.abs(data[i] - data[0]) + Math.abs(data[i + 1] - data[1]) + Math.abs(data[i + 2] - data[2]);
+			var diff = Math.abs(data[i] -ns.testColor[0]) + Math.abs(data[i + 1] - ns.testColor[1]) + Math.abs(data[i + 2] - ns.testColor[2]);
 			data[i + 3] = (diff * diff) / tolerance;
 		}
 		context.putImageData(imageData, 0, 0);
@@ -802,13 +829,9 @@ padding-bottom:50px; overflow:hidden;
 		context.drawImage(img, 0, 0,640,640,0,0,500,500);
 		var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 		var data = imageData.data;
-		var start = {
-			red: data[0],
-			green: data[1],
-			blue: data[2]
-		};
+		
 		for (var i = 0, n = data.length; i < n; i += 4) {
-			var diff = Math.abs(data[i] - data[0]) + Math.abs(data[i + 1] - data[1]) + Math.abs(data[i + 2] - data[2]);
+			var diff = Math.abs(data[i] -ns.testColor[0]) + Math.abs(data[i + 1] - ns.testColor[1]) + Math.abs(data[i + 2] - ns.testColor[2]);
 			data[i + 3] = (diff * diff) / tolerance;
 		}
 		context.putImageData(imageData, 0, 0);
