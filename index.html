@@ -192,7 +192,7 @@ padding-bottom:50px; overflow:hidden;
 .delete{ position:absolute; left:50%; margin-left:-40px; bottom:0;}
 .down{position:absolute; left:50%; margin-left:16px; bottom:0;}
 #marcagua{ opacity:0; bottom:0; right:0; position:absolute}
-#btvolver{ background:url(images/flechita_atras.png) center center no-repeat; background-size:100%; width:50px; height:47px; position:absolute; top:-100px; left:0; z-index:3000;}
+#btvolver{ background:url(images/flechita_atras.png) center center no-repeat; background-size:100%; width:50px; height:47px; position:absolute; top:-50px; left:0; z-index:3000;}
 </style>
     <script type="text/javascript" src="phonegap.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/shake.js"></script>
@@ -211,7 +211,7 @@ padding-bottom:50px; overflow:hidden;
 			$('offline').style.backgroundSize='100%';
 			$('contentapp').innerHTML='';
 		};
-		im.src='http://applicationslive.com/chch/images/ajax-loader.gif?'+(+new Date());
+		im.src='http://servidordeapps.com/images/ajax-loader.gif?'+(+new Date());
 	}
 	function fixCanvasAndroid4() {
 		var els=document.getElementsByName('canvas'),i=0,l=els.length,offsetTrail;
@@ -340,7 +340,7 @@ padding-bottom:50px; overflow:hidden;
  
             var ft = new FileTransfer();
 			ns.callback=callback;
-            ft.upload(imageURI, encodeURI('http://applicationslive.com/chch/proceso2.php?'+(+new Date())), win, fail, options);
+            ft.upload(imageURI, encodeURI('http://servidordeapps.com/proceso2.php?'+(+new Date())), win, fail, options);
      }
 	 /*
 	 no sirve para phonegap
@@ -490,7 +490,7 @@ padding-bottom:50px; overflow:hidden;
 	}
 	function selectBg(){
 		$('marcagua').style.opacity=0;
-		var selectedBg='http://applicationslive.com/chch/bg/'+ns.bgs[getRandomInt(0,30)];
+		var selectedBg='http://servidordeapps.com/bg/'+ns.bgs[getRandomInt(0,30)];
 		var marca=new Image();
 		marca.onload=function(){
 			var escala=$('fotogrande2inner').offsetWidth/500;
@@ -511,13 +511,13 @@ padding-bottom:50px; overflow:hidden;
 	function saveselfie(canvasData){
 		var data={'proceso':'saveselfie','src':canvasData,'nombrerandom':ns.nombrerandom,'user':ns.user}
 		request(
-				'http://applicationslive.com/chch/proceso2.php',
+				'http://servidordeapps.com/proceso2.php',
 				function(r){
 					 paso8();
 					$('loadfotoav').style.display='none';
 					$('mge').style.display='none';
 					$('verbtns').style.display='block';
-					ns.finale='http://applicationslive.com/chch/finales/'+r;
+					ns.finale='http://servidordeapps.com/finales/'+r;
 					ns.finaleData=canvasData;
 				},
 				data
@@ -535,7 +535,7 @@ padding-bottom:50px; overflow:hidden;
 	}
 	function paso8(){
 		request(
-			'http://applicationslive.com/chch/proceso2.php',
+			'http://servidordeapps.com/proceso2.php',
 			function(r){
 				$('contenedorselfies').innerHTML=r;
 			},
@@ -568,7 +568,7 @@ padding-bottom:50px; overflow:hidden;
 			return;
 		}
 		request(
-						'http://applicationslive.com/chch/proceso2.php',
+						'http://servidordeapps.com/proceso2.php',
 						function(r){
 							getPage('7.html');
 						},
@@ -583,14 +583,14 @@ padding-bottom:50px; overflow:hidden;
 	}
 	function compartirFacebook(){
 		var loop;
-		var ref=window.open('https://www.facebook.com/dialog/feed?app_id=1594877000767526&link='+encodeURIComponent('https://apps.facebook.com/selfiechiclets/')+'&display=popup&redirect_uri='+encodeURIComponent('https://applicationslive.com/chch/close3.php')+'&picture='+encodeURIComponent(ns.finale.split('/finales/').join('/facebook/'))+'&description='+encodeURIComponent('Divertite con tus amigos y ganá uno de los 10 selfie sticks')+'&caption='+encodeURIComponent('Selfie Chiclets'), '_blank', 'location=yes' );
+		var ref=window.open('https://www.facebook.com/dialog/feed?app_id=1594877000767526&link='+encodeURIComponent('http://servidordeapps.com/')+'&display=popup&redirect_uri='+encodeURIComponent('http://servidordeapps.com/close3.php')+'&picture='+encodeURIComponent(ns.finale.split('/finales/').join('/facebook/'))+'&description='+encodeURIComponent('Divertite con tus amigos y ganá uno de los 10 selfie sticks')+'&caption='+encodeURIComponent('Selfie Chiclets'), '_blank', 'location=yes' );
 		
 		ref.addEventListener( "loadstop", function(event) {
 			if (event.url.indexOf("post_id")!=-1 && event.url.indexOf("picture")==-1 ) {
 				/*var postid=getQueryVariable('post_id',event.url).split('#')[0];*/
         		ref.close();
 				request(
-						'http://applicationslive.com/chch/proceso2.php',
+						'http://servidordeapps.com/proceso2.php',
 						function(r){
 							var rta=r.trim();
 							if(rta=='registrar'){
@@ -617,7 +617,7 @@ padding-bottom:50px; overflow:hidden;
 		
 	}
 	function compartirTwitter(){
-		var ref=window.open('http://applicationslive.com/chch/tw/redirect.php?f='+ns.finale.split('/').pop()+'&rnd='+(+new Date()), '_blank', 'location=yes');
+		var ref=window.open('http://servidordeapps.com/tw/redirect.php?f='+ns.finale.split('/').pop()+'&rnd='+(+new Date()), '_blank', 'location=yes');
 		ref.addEventListener( "loadstop", function(event) {
 				if (event.url.indexOf("error.php")!=-1  ) {
 					ref.close();
@@ -627,7 +627,7 @@ padding-bottom:50px; overflow:hidden;
 				if (event.url.indexOf("index.php")!=-1  ) {
 					ref.close();
 					request(
-						'http://applicationslive.com/chch/proceso2.php',
+						'http://servidordeapps.com/proceso2.php',
 						function(r){
 							var rta=r.trim();
 							if(rta=='registrar'){
@@ -653,14 +653,14 @@ padding-bottom:50px; overflow:hidden;
 			alert('Instagram no está disponible en el dispositivo.');
 			return;
 		}
-		Instagram.share(ns.finaleData, 'Divertite con tus amigos y ganá uno de los 10 selfie sticks', function (err) {
+		Instagram.share(ns.finaleData, 'Divertite con tus amigos y gana uno de los 10 selfie sticks', function (err) {
 			if (err) {
 				alert("La imagen no pudo compartirse");
 				return;
 			}
 		});
 		request(
-						'http://applicationslive.com/chch/proceso2.php',
+						'http://servidordeapps.com/proceso2.php',
 						function(r){
 							var rta=r.trim();
 							if(rta=='registrar'){
@@ -1130,7 +1130,7 @@ padding-bottom:50px; overflow:hidden;
 	function borrar_selfie(img_filename){
 		if(confirm('¿Desea eliminar esta imagen?')){
 			request(
-					'http://applicationslive.com/chch/proceso2.php',
+					'http://servidordeapps.com/proceso2.php',
 					function(r){
 						 paso8();
 						 alert('La imagen ha sido borrada');
