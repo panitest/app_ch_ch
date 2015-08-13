@@ -30,8 +30,8 @@
  </div>
  
  <div class="parabotoneschicos" style="margin-top:0px; width:100%; overflow:hidden;">
-<div class="btbotonesmaschicos sacarotrafoto" onClick="getPage('2.html')"></div>
-<div class="btbotonesmaschicos continuar" onClick="saveCanvas();getPage('4.html',prepareShake)"></div>
+<div class="btbotonesmaschicos sacarotrafoto" onClick="gaPlugin.trackEvent( function(){/*success*/}, function(){/*error*/},'Sacar otra foto', 'Clic', 'Sacar otra foto', 1);getPage('2.html')"></div>
+<div class="btbotonesmaschicos continuar" onClick="gaPlugin.trackEvent( function(){/*success*/}, function(){/*error*/},'Continuar2', 'Clic', 'Continuar2', 1);saveCanvas();getPage('4.html',prepareShake)"></div>
 </div>
 </div>
 

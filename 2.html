@@ -6,8 +6,8 @@
 <div id="cajabasedetodo">
   <div class="link2"></div>
   <div class="parabotoneschicos">
-<div class="btbotonesmaschicos sacafoto" onclick="capturePhotoWithFile();"></div>
-<div class="btbotonesmaschicos elegirfoto fileContainer" onclick="getPhoto(pictureSource.PHOTOLIBRARY);"></div>
+<div class="btbotonesmaschicos sacafoto" onclick="gaPlugin.trackEvent( function(){/*success*/}, function(){/*error*/},'SacarFoto', 'Clic', 'SacarFoto', 1);capturePhotoWithFile();"></div>
+<div class="btbotonesmaschicos elegirfoto fileContainer" onclick="gaPlugin.trackEvent( function(){/*success*/}, function(){/*error*/},'ElegirFoto', 'Clic', 'ElegirFoto', 1);getPhoto(pictureSource.PHOTOLIBRARY);"></div>
 </div>
 </div>
 

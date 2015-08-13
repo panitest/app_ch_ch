@@ -12,9 +12,9 @@
 
 <div class="parabotoneschicos">
 <div id="verbtns">
-<div class=" bticonoscompartir  icfacebook" onClick="compartirFacebook()"></div>
-<div class=" bticonoscompartir  ictwitter"  onClick="compartirTwitter()"></div>
-<div class=" bticonoscompartir  icinstagram" onclick="compartirInstagram()"></div>
+<div class=" bticonoscompartir  icfacebook" onClick="gaPlugin.trackEvent( function(){/*success*/}, function(){/*error*/},'Facebook', 'Clic', 'Facebook', 1);compartirFacebook()"></div>
+<div class=" bticonoscompartir  ictwitter"  onClick="gaPlugin.trackEvent( function(){/*success*/}, function(){/*error*/},'Twitter', 'Clic', 'Twitter', 1);compartirTwitter()"></div>
+<div class=" bticonoscompartir  icinstagram" onclick="gaPlugin.trackEvent( function(){/*success*/}, function(){/*error*/},'Instagram', 'Clic', 'Instagram', 1);compartirInstagram()"></div>
 </div>
 </div>
 <div class="btgrandes cambiarfondo" style="margin-top:-20px;"  onClick="getPage('4.html',prepareShake)"></div>  
