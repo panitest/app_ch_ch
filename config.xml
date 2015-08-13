@@ -59,6 +59,7 @@
 	<gap:plugin name="org.apache.cordova.device" version="0.2.12" />
 	<gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
 	<gap:plugin name="org.devgeeks.canvas2imageplugin" version="0.6.0" />
+	<gap:plugin name="com.adobe.plugins.gaplugin" version="2.4.0" />
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
     <!--

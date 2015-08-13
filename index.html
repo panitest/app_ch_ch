@@ -373,6 +373,7 @@ padding-bottom:50px; overflow:hidden;
 	document.addEventListener("deviceready",onDeviceReady,false);
 	var HEIGHT;
 	var WIDTH;
+	var gaPlugin;
 	function onDeviceReady() 
 	{
 		pictureSource=navigator.camera.PictureSourceType;
@@ -380,7 +381,7 @@ padding-bottom:50px; overflow:hidden;
 		ns.so=(device.platform);
 		ns.user=device.uuid;
 		ns.bgs=[];
-		var i=1,l=61;
+		var i=1,l=122;
 		for(;i<l;i++){
 			ns.bgs.push('background'+i+'.jpg');
 		}
@@ -398,6 +399,9 @@ padding-bottom:50px; overflow:hidden;
 		HEIGHT=window.innerHeight;
 		WIDTH=window.innerWidth;
 		testConexion();
+		gaPlugin = window.plugins.gaPlugin;
+    	gaPlugin.init(function(){/*success*/}, function(){/*error*/}, "UA-65910869-1", 10);
+		
 	}
 	
 	
@@ -490,7 +494,7 @@ padding-bottom:50px; overflow:hidden;
 	}
 	function selectBg(){
 		$('marcagua').style.opacity=0;
-		var selectedBg='http://servidordeapps.com/bg/'+ns.bgs[getRandomInt(0,30)];
+		var selectedBg='http://servidordeapps.com/bg/'+ns.bgs[getRandomInt(0,120)];
 		var marca=new Image();
 		marca.onload=function(){
 			var escala=$('fotogrande2inner').offsetWidth/500;
