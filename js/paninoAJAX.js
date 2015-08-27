@@ -88,7 +88,7 @@ function requestGET(url,callback,params){
 	H.open('get',getPhoneGapPath()+url+'?'+p+'&'+Math.random(),true);
 	H.onreadystatechange=function(){
 		if(H.readyState==4 && (H.status == 200 ||  H.status==0) ){
-			if(callback)callback();
+			if(callback)callback(H.responseText);
 			H.onreadystatechange=function(){}
 			H.abort();
 			H=null;
