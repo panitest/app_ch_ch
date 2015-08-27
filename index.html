@@ -428,7 +428,7 @@ padding-bottom:50px; overflow:hidden;
         navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
     }
 	function getPage(p,callback){
-		request(
+		requestGET(
 			p,
 			function(r){
 				switch(p){

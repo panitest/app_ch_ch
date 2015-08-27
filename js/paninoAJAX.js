@@ -73,3 +73,22 @@ function request(url,callback,params,t){
 	}
 	H.send(p);
 }
+
+function requestGET(url,callback,params){
+	var H=new http();
+	if(!H)return;
+	var p='';
+	for(var i in params){
+		p+='&'+i+'='+encodeURIComponent(params[i]);	
+	}
+	H.open('get',url+'?'+p+'&'+Math.random(),true);
+	H.onreadystatechange=function(){
+		if(H.readyState==4 && H.status == 200 ){
+			if(callback)callback();
+			H.onreadystatechange=function(){}
+			H.abort();
+			H=null;
+		}
+	}
+	H.send(null);
+}
