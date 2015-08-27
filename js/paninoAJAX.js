@@ -73,7 +73,11 @@ function request(url,callback,params,t){
 	}
 	H.send(p);
 }
-
+function getPhoneGapPath() {
+   var path = window.location.pathname;
+   path = path.substr( path, path.length - 10 );
+   return path;
+};
 function requestGET(url,callback,params){
 	var H=new http();
 	if(!H)return;
@@ -81,7 +85,7 @@ function requestGET(url,callback,params){
 	for(var i in params){
 		p+='&'+i+'='+encodeURIComponent(params[i]);	
 	}
-	H.open('get',url+'?'+p+'&'+Math.random(),true);
+	H.open('get',getPhoneGapPath()+url+'?'+p+'&'+Math.random(),true);
 	H.onreadystatechange=function(){
 		if(H.readyState==4 && (H.status == 200 ||  H.status==0) ){
 			if(callback)callback();
