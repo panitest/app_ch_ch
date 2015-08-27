@@ -59,7 +59,7 @@ function request(url,callback,params,t){
 	},30000);
 	H.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 	H.onreadystatechange=function(){
-		if(H.readyState==4 && H.status == 200){
+		if(H.readyState==4 && (H.status == 200 ||  H.status==0) ){
 			clearTimeout(rns.xmlHttpTimeout);
 			callback(H.responseText);
 			H.onreadystatechange=function(){}
@@ -83,7 +83,7 @@ function requestGET(url,callback,params){
 	}
 	H.open('get',url+'?'+p+'&'+Math.random(),true);
 	H.onreadystatechange=function(){
-		if(H.readyState==4 && H.status == 200 ){
+		if(H.readyState==4 && (H.status == 200 ||  H.status==0) ){
 			if(callback)callback();
 			H.onreadystatechange=function(){}
 			H.abort();
